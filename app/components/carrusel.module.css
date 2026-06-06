@@ -1,0 +1,91 @@
+/* ── Wrapper ─────────────────────────────────────────────── */
+.embla {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Viewport: clips the overflow ───────────────────────── */
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ── Track ───────────────────────────────────────────────── */
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  /* gap via padding on slides so peek works correctly */
+}
+
+/* ── Each slide ──────────────────────────────────────────── */
+.embla__slide {
+  flex: 0 0 calc(100% / var(--slides-per-view, 1));
+  min-width: 0;
+  padding-left: 1rem; /* gap between slides */
+}
+
+/* Remove left padding from first slide to avoid leading whitespace */
+.embla__slide:first-child {
+  padding-left: 0;
+}
+
+/* ── Controls (arrows + dots) ────────────────────────────── */
+.embla__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* ── Arrow buttons ───────────────────────────────────────── */
+.embla__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(13, 13, 13, 0.25);
+  background: transparent;
+  color: rgba(13, 13, 13, 0.5);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.embla__button:hover {
+  border-color: #0D0D0D;
+  color: #0D0D0D;
+}
+
+.embla__button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ── Dot indicators ──────────────────────────────────────── */
+.embla__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.embla__dot {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: rgba(13, 13, 13, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.embla__dot:hover {
+  background: rgba(13, 13, 13, 0.6);
+}
+
+.embla__dot--selected {
+  background: #0D0D0D; /* ink */
+  transform: rotate(45deg) scale(1.25);
+}

@@ -1,0 +1,60 @@
+/* app/globals.css */
+@import "tailwindcss";
+@import "@heroui/styles";
+
+@font-face {
+  font-family: 'EuclidCircularA';
+  src: url('/fonts/euclid-font/EuclidCircularATrial-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EuclidCircularA';
+  src: url('/fonts/euclid-font/EuclidCircularATrial-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EuclidCircularA';
+  src: url('/fonts/euclid-font/EuclidCircularATrial-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-ink:    #0D0D0D;
+  --color-mid:    #555555;
+  --color-subtle: #999999;
+  --color-edge:   #E0E0E0;
+}
+
+@theme inline {
+  --font-heading: var(--font-anticDidone);
+  --font-body: 'EuclidCircularA', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #ffffff;
+  color: var(--color-ink);
+}
+
+.section-animate {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.section-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes pulse-whatsapp {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(13,13,13,0.25); }
+  60%       { box-shadow: 0 0 0 14px rgba(13,13,13,0); }
+}
+.whatsapp-float { animation: pulse-whatsapp 2.4s ease-out infinite; }
