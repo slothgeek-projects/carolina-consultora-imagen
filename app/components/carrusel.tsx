@@ -14,6 +14,20 @@ type CarruselProps = {
   loop?: boolean
 }
 
+/* Ni autoplay ni autoscroll se pueden frenar con CSS: son transforms en JS.
+   Si el sistema pide menos movimiento, el carrusel queda solo manual. */
+function usePrefersReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReduced(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+  return reduced
+}
+
 function useResolvedSPV(def: number, sm?: number, lg?: number): number {
   const [count, setCount] = useState(def)
   useEffect(() => {
@@ -41,11 +55,12 @@ export default function Carrusel({
   const spvSm  = typeof slidesPerView === 'number' ? undefined : slidesPerView.sm
   const spvLg  = typeof slidesPerView === 'number' ? undefined : slidesPerView.lg
   const resolvedSPV = useResolvedSPV(spvDef, spvSm, spvLg)
+  const reducedMotion = usePrefersReducedMotion()
 
   const isStatic = nodes.length <= resolvedSPV
 
   const plugins = useMemo(() => {
-    if (isStatic) return []
+    if (isStatic || reducedMotion) return []
     if (mode === 'autoscroll') {
       return [
         AutoScroll({
@@ -62,7 +77,7 @@ export default function Carrusel({
         stopOnInteraction: false,
       }),
     ]
-  }, [mode, isStatic])
+  }, [mode, isStatic, reducedMotion])
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop }, plugins)
 
@@ -104,7 +119,8 @@ export default function Carrusel({
         </div>
       </div>
 
-      {!isStatic && mode !== 'autoscroll' && (
+      {/* En autoscroll sin plugin (reduced-motion) hacen falta los controles */}
+      {!isStatic && (mode !== 'autoscroll' || reducedMotion) && (
         <div className={styles.embla__controls}>
           <button
             className={styles.embla__button}

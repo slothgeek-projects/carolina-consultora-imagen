@@ -26,8 +26,6 @@ const WHATSAPP_URL =
   "https://wa.me/50670170734?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20la%20asesor%C3%ADa%20de%20imagen.";
 const AGENDA_URL = "/agendar";
 
-const HERO_IMG = "/hero/bg.svg";
-
 /* lucide-react ya no incluye íconos de marca, así que WhatsApp e Instagram
    siguen siendo SVG propios. El resto viene de lucide. */
 const IconWhatsApp = ({ size = 20 }: { size?: number }) => (
@@ -115,9 +113,9 @@ const benefits = [
 ];
 
 const testimonialSlides = [
-  <div key="t1" className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-12 relative">
-    <div className="absolute top-6 left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-6 mb-8">
+  <div key="t1" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
+    <div className="absolute top-4 left-5 sm:top-6 sm:left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
+    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8">
       Siempre sentí que mi ropa no me representaba del todo. Después de la asesoría llegué a reuniones importantes sintiéndome la{" "}
       <strong className="font-medium text-white">versión más poderosa de mí misma</strong>. El cambio fue inmediato — no solo en cómo me veía, sino en cómo me percibían los demás.
     </p>
@@ -127,14 +125,14 @@ const testimonialSlides = [
       </div>
       <div>
         <p className="font-body font-medium text-sm text-white">Ana Laura M.</p>
-        <p className="font-body font-light text-xs text-white/50 tracking-wide uppercase mt-0.5">Directora de Marketing</p>
+        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Directora de Marketing</p>
       </div>
     </div>
   </div>,
 
-  <div key="t2" className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-12 relative">
-    <div className="absolute top-6 left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-6 mb-8">
+  <div key="t2" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
+    <div className="absolute top-4 left-5 sm:top-6 sm:left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
+    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8">
       <strong className="font-medium text-white">Gasto la mitad y me siento el doble de segura.</strong> Carolina me enseñó exactamente qué prendas funcionan para mi cuerpo, mi colorimetría y mis objetivos. Por primera vez en mi vida compro con criterio, no por impulso.
     </p>
     <div className="flex items-center gap-4">
@@ -143,14 +141,14 @@ const testimonialSlides = [
       </div>
       <div>
         <p className="font-body font-medium text-sm text-white">Valeria R.</p>
-        <p className="font-body font-light text-xs text-white/50 tracking-wide uppercase mt-0.5">Emprendedora</p>
+        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Emprendedora</p>
       </div>
     </div>
   </div>,
 
-  <div key="t3" className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-12 relative">
-    <div className="absolute top-6 left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-6 mb-8">
+  <div key="t3" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
+    <div className="absolute top-4 left-5 sm:top-6 sm:left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
+    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8">
       Como ejecutivo nunca le había dado importancia real a la imagen. Hoy entiendo que era{" "}
       <strong className="font-medium text-white">mi activo más desaprovechado</strong>. Después de la asesoría, varios clientes comentaron que notaron algo diferente — más presencia, más autoridad.
     </p>
@@ -160,7 +158,7 @@ const testimonialSlides = [
       </div>
       <div>
         <p className="font-body font-medium text-sm text-white">Ricardo F.</p>
-        <p className="font-body font-light text-xs text-white/50 tracking-wide uppercase mt-0.5">Gerente General</p>
+        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Gerente General</p>
       </div>
     </div>
   </div>,
@@ -173,11 +171,33 @@ export default function Home() {
 
       {/* ── 1. HERO ─────────────────────────────────────────────── */}
       <section id="inicio" className="relative bg-white">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] items-stretch min-h-screen">
-          {/* Left — texto */}
-          <div className="flex flex-col justify-center px-6 lg:px-12 pt-32 pb-16 lg:py-32 order-2 lg:order-1 z-10 relative">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] items-stretch lg:min-h-dvh">
+          {/* Foto — bloque propio en móvil/tablet, fondo a sangre desde lg.
+              object-position corrido a la derecha porque la modelo está en ese
+              lado de la toma; centrada dejaría solo el fondo beige a la vista. */}
+          <div className="relative order-1 lg:order-2 w-full aspect-[3/4] sm:aspect-[16/10] lg:aspect-auto lg:absolute lg:inset-0">
+            <Image
+              src="/hero/bg.webp"
+              alt="Carolina Salazar, consultora de imagen estratégica"
+              fill
+              preload
+              sizes="100vw"
+              className="hidden md:block object-cover"
+            />
+            <Image
+              src="/hero/bg-mobile.png"
+              alt="Carolina Salazar, consultora de imagen estratégica"
+              fill
+              preload
+              sizes="100vw"
+              className="md:hidden object-cover"
+            />
+          </div>
 
-            <h1 className="font-heading text-[clamp(42px,5.2vw,68px)] font-normal leading-[1.04] tracking-[-0.01em] text-ink mb-7">
+          {/* Left — texto */}
+          <div className="flex flex-col justify-center px-6 md:px-8 lg:px-12 pt-10 pb-16 lg:py-32 order-2 lg:order-1 z-10 relative">
+
+            <h1 className="font-heading text-[clamp(34px,7vw,68px)] font-normal leading-[1.04] tracking-[-0.01em] text-ink mb-7">
               Consultora de Imagen{" "}
               <em className="italic text-mid">Estratégica</em>
             </h1>
@@ -208,40 +228,28 @@ export default function Home() {
             <div>
               <a
                 href="#servicios"
-                className="inline-block px-9 py-4 bg-ink text-white font-body text-[10px] tracking-[0.14em] uppercase hover:bg-[#333] transition-colors duration-200"
+                className="block sm:inline-block text-center px-9 py-4 bg-ink text-white font-body text-[11px] md:text-[10px] tracking-[0.14em] uppercase hover:bg-[#333] transition-colors duration-200"
               >
                 Ver todos los servicios
               </a>
             </div>
-          </div>
-
-          {/* Right — foto nueva a color */}
-          <div className="absolute top-0 w-full right-0 min-h-[420px] lg:min-h-screen order-1 lg:order-2">
-            <Image
-              src={HERO_IMG}
-              alt="Carolina Salazar, consultora de imagen estratégica"
-              fill
-              preload
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
           </div>
         </div>
       </section>
 
       {/* ── 2. PROPÓSITO ────────────────────────────────────────── */}
       <section id="proposito" className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <AnimatedSection className="text-center mb-14 space-y-4 max-w-3xl mx-auto">
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle">
               Para quién es
             </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+            <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
               Diseñada para quienes entienden que su imagen{" "}
               <em className="italic text-mid">es parte de su estrategia</em>
             </h2>
             <div className="w-7 h-px bg-ink mx-auto" />
-            <p className="font-body font-light text-[15px] leading-[1.9] text-mid">
+            <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid">
               <strong className="font-medium text-ink">Esta asesoría no es para todos</strong> — y eso es precisamente lo
               que la hace efectiva. Está diseñada para personas que tienen{" "}
               <strong className="font-medium text-ink">metas claras, se toman en serio su presencia</strong> y entienden
@@ -274,16 +282,16 @@ export default function Home() {
 
       {/* ── 3. SERVICIOS ────────────────────────────────────────── */}
       <section id="servicios" className="py-20 md:py-28 bg-white" style={{background: "linear-gradient(to bottom, #f9f9f9 0%, #fff 100%)"}}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <AnimatedSection className="text-center mb-14 space-y-4 max-w-3xl mx-auto">
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle">
               Servicios de asesoría de imagen online
             </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+            <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
               ¿Qué es la asesoría de imagen personal?
             </h2>
             <div className="w-7 h-px bg-ink mx-auto" />
-            <p className="font-body font-light text-[15px] leading-[1.9] text-mid">
+            <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid">
               Va mucho más allá de la ropa o la moda. Es un análisis estratégico y
               profundamente personalizado de tu{" "}
               <strong className="font-medium text-ink">colorimetría, morfología, estilo de vida y comunicación visual</strong>{" "}
@@ -298,12 +306,12 @@ export default function Home() {
           >
             {services.map((s, i) => (
               <AnimatedSection key={s.title} delay={i * 60}>
-                <div className="bg-white p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200 h-full flex flex-col">
+                <div className="bg-white p-7 sm:p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200 h-full flex flex-col">
                   <span className="text-ink mb-5 block">{s.icon}</span>
                   <h3 className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-3">
                     {s.title}
                   </h3>
-                  <p className="font-body font-light text-sm leading-[1.8] text-mid">{s.desc}</p>
+                  <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid">{s.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -322,7 +330,7 @@ export default function Home() {
 
       {/* ── 4. SOBRE MÍ ─────────────────────────────────────────── */}
       <section id="sobre-mi" className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <AnimatedSection>
               {/* TODO: reemplazar por la foto definitiva de Carolina si hay una nueva */}
@@ -341,21 +349,21 @@ export default function Home() {
               <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
                 Sobre mí
               </p>
-              <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1] mb-5">
+              <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1] mb-5">
                 Carolina Salazar
               </h2>
               <div className="w-7 h-px bg-ink mb-6" />
-              <p className="font-body font-light text-[15px] leading-[1.9] text-mid mb-5">
+              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mb-5">
                 Soy <strong className="font-medium text-ink">consultora de imagen certificada</strong>, 
                 especializada en imagen personal, profesional y empresarial. Trabajo de forma 100% online 
                 con profesionales, líderes y emprendedores de todo el mundo de habla hispana que saben que 
                 su presencia visual es parte de su estrategia — no un accesorio.
               </p>
-              <p className="font-body font-light text-[15px] leading-[1.9] text-mid mb-8">
+              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mb-8">
                 Mi enfoque no es sobre moda ni tendencias. Es sobre identidad: entender quién eres, dónde 
                 vas y asegurarte de que tu imagen trabaje a tu favor antes de que abras la boca.
               </p>
-              <p className="font-body font-light text-[15px] leading-[1.9] text-mid mb-8">
+              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mb-8">
                 Cada proceso es profundamente personalizado — porque no existe una fórmula universal para 
                 proyectar autoridad, autenticidad y presencia. Lo que sí existe es un método. Y ese método es Piel Pantera.
               </p>
@@ -363,7 +371,7 @@ export default function Home() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-9 py-4 border border-ink text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
+                className="inline-flex w-full sm:w-auto justify-center items-center gap-3 px-9 py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
               >
                 <IconWhatsApp size={16} />
                 Hablemos de tu imagen
@@ -375,22 +383,23 @@ export default function Home() {
 
       {/* ── 5. PAQUETES ─────────────────────────────────────────── */}
       <section id="paquetes" className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <AnimatedSection className="text-center mb-12">
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
               Consultoría de imagen
             </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+            <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
               Paquetes de asesoría
             </h2>
             <div className="w-7 h-px bg-ink mx-auto mt-5" />
           </AnimatedSection>
 
-          {/* Package cards */}
-          <div className="grid md:grid-cols-3 items-end">
+          {/* Package cards — apiladas hasta lg: a 768px tres columnas dejaban
+              ~170px de contenido por tarjeta. divide-y las separa al apilarse. */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 items-end divide-y divide-edge lg:divide-y-0">
             {/* Esencial */}
             <AnimatedSection delay={0}>
-              <div className="bg-white p-8 md:p-10 relative hover:bg-[#fafafa] transition-colors duration-200 h-full">
+              <div className="bg-white p-7 sm:p-8 lg:p-10 relative hover:bg-[#fafafa] transition-colors duration-200 h-full">
                 <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-mid border border-edge px-3 py-1 mb-6">
                   Esencial
                 </span>
@@ -399,7 +408,7 @@ export default function Home() {
                 </h3>
                 <p className="font-heading text-[36px] font-normal text-ink mb-1">₡85.000</p>
                 <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">Tu punto de partida.</p>
-                <p className="font-body font-light text-sm leading-[1.8] text-mid mb-6">
+                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid mb-6">
                   Para quienes quieren comenzar su proceso de transformación con bases sólidas.
                 </p>
                 <ul className="space-y-3 mb-8">
@@ -418,7 +427,7 @@ export default function Home() {
                 <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mb-6">Modalidad: Online</p>
                 <a
                   href={AGENDA_URL}
-                  className="block w-full text-center py-4 border border-ink text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
+                  className="block w-full text-center py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
                 >
                   Empezar mi transformación
                 </a>
@@ -427,7 +436,7 @@ export default function Home() {
 
             {/* Profesional — FEATURED */}
             <AnimatedSection delay={80}>
-              <div className="bg-ink p-8 md:p-10 relative md:-mt-6 shadow-xl h-full">
+              <div className="bg-ink p-7 sm:p-8 lg:p-10 relative lg:-mt-6 shadow-xl h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-white border border-white/30 px-3 py-1">
                     Profesional
@@ -444,7 +453,7 @@ export default function Home() {
                   Imagen Profesional
                 </h3>
                 <p className="font-heading text-[36px] font-normal text-white mb-1">₡165.000</p>
-                <p className="font-body font-light text-xs text-white/40 tracking-wide mb-6">La inversión que tu presencia merece.</p>
+                <p className="font-body font-light text-xs text-white/60 tracking-wide mb-6">La inversión que tu presencia merece.</p>
                 <p className="font-body font-light text-sm leading-[1.8] text-white/70 mb-6">
                   Para profesionales y emprendedores que desean proyectar seguridad, coherencia y credibilidad.
                 </p>
@@ -463,10 +472,10 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <p className="font-body font-light text-xs text-white/30 tracking-wide uppercase mb-6">Modalidad: Online</p>
+                <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mb-6">Modalidad: Online</p>
                 <a
                   href={AGENDA_URL}
-                  className="block w-full text-center py-4 bg-white text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200"
+                  className="block w-full text-center py-4 bg-white text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200"
                 >
                   Proyectar mi imagen con confianza
                 </a>
@@ -475,7 +484,7 @@ export default function Home() {
 
             {/* Premium */}
             <AnimatedSection delay={160}>
-              <div className="bg-white p-8 md:p-10 relative hover:bg-[#fafafa] transition-colors duration-200 h-full">
+              <div className="bg-white p-7 sm:p-8 lg:p-10 relative hover:bg-[#fafafa] transition-colors duration-200 h-full">
                 <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-mid border border-edge px-3 py-1 mb-6">
                   Premium
                 </span>
@@ -484,7 +493,7 @@ export default function Home() {
                 </h3>
                 <p className="font-heading text-[36px] font-normal text-ink mb-1">₡290.000</p>
                 <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">Proceso completo, resultados que se ven.</p>
-                <p className="font-body font-light text-sm leading-[1.8] text-mid mb-6">
+                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid mb-6">
                   Para líderes, ejecutivos y marcas personales que requieren imagen alineada a su rol y objetivos.
                 </p>
                 <ul className="space-y-3 mb-8">
@@ -503,7 +512,7 @@ export default function Home() {
                 <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mb-6">Modalidad: Online / Híbrido</p>
                 <a
                   href={AGENDA_URL}
-                  className="block w-full text-center py-4 border border-ink text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
+                  className="block w-full text-center py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
                 >
                   Quiero una imagen que lidere
                 </a>
@@ -528,12 +537,12 @@ export default function Home() {
 
       {/* ── 6. PASO A PASO ──────────────────────────────────────── */}
       <section id="proceso" className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <AnimatedSection className="text-center mb-14">
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
               Metodología
             </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+            <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
               El proceso paso a paso
             </h2>
             <div className="w-7 h-px bg-ink mx-auto mt-5" />
@@ -559,21 +568,22 @@ export default function Home() {
                   <h3 className="font-heading text-[22px] font-normal text-ink mb-3 leading-snug relative z-10">
                     {s.title}
                   </h3>
-                  <p className="font-body font-light text-sm leading-[1.8] text-mid relative z-10">
+                  <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid relative z-10">
                     {s.description}
                   </p>
                 </div>
               </AnimatedSection>
 
             ))}
-            <div className="bg-white p-8 h-full relative overflow-hidden" />
+            {/* Celda de cierre: solo cuadra la retícula de 4 columnas */}
+            <div className="hidden lg:block bg-white p-8 h-full relative overflow-hidden" />
           </div>
         </div>
       </section>
 
       {/* ── 7. MODALIDAD ONLINE ─────────────────────────────────── */}
       <section id="online" className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <AnimatedSection className="text-center mb-14 max-w-2xl mx-auto">
             <span className="inline-block text-ink mb-6">
               <Globe size={30} strokeWidth={1} />
@@ -581,15 +591,16 @@ export default function Home() {
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
               Dónde estés
             </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+            <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
               Asesoría 100% online,<br />sin límites de ubicación.
             </h2>
             <div className="w-7 h-px bg-ink mx-auto mt-5" />
           </AnimatedSection>
 
           {/* 3 pilares — íconos rediseñados */}
+          {/* A 768px tres columnas dejaban ~20 caracteres por línea */}
           <div
-            className="grid grid-cols-1 md:grid-cols-3 mb-14"
+            className="grid grid-cols-1 lg:grid-cols-3 mb-14"
             style={{ gap: "1px", background: "#E0E0E0" }}
           >
             {[
@@ -609,24 +620,24 @@ export default function Home() {
                 icon: <Target size={30} strokeWidth={1} />,
               },
             ].map((pillar) => (
-              <div key={pillar.title} className="bg-white p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200">
+              <div key={pillar.title} className="bg-white p-7 sm:p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200">
                 <span className="text-ink mb-6 block">{pillar.icon}</span>
                 <h3 className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-3">
                   {pillar.title}
                 </h3>
-                <p className="font-body font-light text-sm leading-[1.8] text-mid">{pillar.desc}</p>
+                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid">{pillar.desc}</p>
               </div>
             ))}
           </div>
 
           {/* Tools block */}
           <AnimatedSection delay={100}>
-            <div className="bg-ink p-10 md:p-14 grid md:grid-cols-2 gap-12 items-center">
+            <div className="bg-ink p-6 sm:p-10 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
               <div>
                 <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/50 mb-6">
                   Herramientas de trabajo
                 </p>
-                <div className="grid grid-cols-2 gap-px bg-white/10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10">
                   {[
                     { name: "Videollamadas", subtitle: "Zoom · Google Meet", icon: <Video size={22} strokeWidth={1.5} /> },
                     { name: "Análisis fotográfico", subtitle: "Fotografías de alta calidad", icon: <Camera size={22} strokeWidth={1.5} /> },
@@ -636,18 +647,18 @@ export default function Home() {
                     <div key={tool.name} className="flex flex-col gap-2 p-4 bg-ink hover:bg-white/5 transition-colors duration-200">
                       <span className="text-white/60">{tool.icon}</span>
                       <p className="font-body font-medium text-sm text-white">{tool.name}</p>
-                      <p className="font-body font-light text-xs text-white/40">{tool.subtitle}</p>
+                      <p className="font-body font-light text-xs text-white/60">{tool.subtitle}</p>
                     </div>
                   ))}
                 </div>
               </div>
               <div>
                 <Image
-                  src="/hero/online.svg"
+                  src="/hero/online.webp"
                   alt="Sesión de asesoría de imagen por videollamada"
-                  width={1350}
-                  height={1080}
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  width={1600}
+                  height={1280}
+                  sizes="(max-width: 1023px) 100vw, 50vw"
                   className="w-full aspect-[5/4] object-cover"
                 />
               </div>
@@ -660,12 +671,12 @@ export default function Home() {
       <section id="testimonios" className="border-t border-edge bg-ink">
         {/* Resultados */}
         <div className="py-20 md:py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
             <AnimatedSection className="text-center mb-12">
               <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
                 Resultados
               </p>
-              <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+              <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
                 Lo que te llevas
               </h2>
               <div className="w-7 h-px bg-ink mx-auto mt-5" />
@@ -681,7 +692,7 @@ export default function Home() {
                     <p className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-2">
                       {b.title}
                     </p>
-                    <p className="font-body font-light text-sm leading-[1.8] text-mid">{b.desc}</p>
+                    <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid">{b.desc}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -691,12 +702,12 @@ export default function Home() {
 
         {/* Testimonios */}
         <div className="relative py-20 md:py-28 overflow-hidden">
-          <div className="relative max-w-5xl mx-auto px-6 lg:px-12">
+          <div className="relative max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
             <AnimatedSection className="text-center mb-14">
               <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/50 mb-4">
                 Prueba social
               </p>
-              <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-white leading-[1.1]">
+              <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-white leading-[1.1]">
                 Testimonios de clientes
               </h2>
               <div className="w-7 h-px bg-white/60 mx-auto mt-5" />
@@ -715,7 +726,7 @@ export default function Home() {
               </p>
               <a
                 href={AGENDA_URL}
-                className="inline-block px-10 py-4 bg-white text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200"
+                className="inline-block w-full sm:w-auto text-center px-10 py-4 bg-white text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200"
               >
                 Agendar mi asesoría
               </a>
@@ -726,7 +737,7 @@ export default function Home() {
 
       {/* ── 9. FAQ ──────────────────────────────────────────────── */}
       <section id="faq" className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-3xl mx-auto px-6 lg:px-12">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 lg:px-12">
           <AnimatedSection className="text-center mb-14">
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
               Dudas frecuentes
@@ -749,7 +760,7 @@ export default function Home() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-ink text-white font-body text-[10px] tracking-[0.08em] uppercase hover:bg-[#333] transition-colors duration-200"
+              className="inline-flex w-full sm:w-auto justify-center items-center gap-3 px-10 py-4 bg-ink text-white font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-[#333] transition-colors duration-200"
             >
               <IconWhatsApp size={16} />
               Escribir por WhatsApp
@@ -761,19 +772,20 @@ export default function Home() {
       {/* ── FOOTER ──────────────────────────────────────────────── */}
       <footer className="bg-ink">
         {/* Footer body */}
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
-            <div className="md:col-span-1">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 pb-10 border-b border-white/10">
+            <div className="sm:col-span-2 lg:col-span-1">
               <p className="font-heading text-[22px] font-normal text-white mb-1">Carolina Salazar</p>
-              <p className="font-body font-light text-sm leading-[1.8] text-white/40 mb-6">
+              <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-white/60 mb-6">
                 Consultora de imagen personal, profesional y empresarial online.
                 Acompañando a líderes, profesionales y emprendedores a proyectar su mejor versión.
               </p>
-              <div className="flex items-center gap-4">
-                <a href="https://www.instagram.com/pielpanteracollections" aria-label="Instagram de Piel Pantera" className="text-white/30 hover:text-white/70 transition-colors duration-200">
+              {/* -ml-3 compensa el padding táctil para que los iconos sigan alineados */}
+              <div className="flex items-center gap-1 -ml-3">
+                <a href="https://www.instagram.com/pielpanteracollections" aria-label="Instagram de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
                   <IconInstagram />
                 </a>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Piel Pantera" className="text-white/30 hover:text-white/70 transition-colors duration-200">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
                   <IconWhatsApp size={18} />
                 </a>
               </div>
@@ -810,14 +822,14 @@ export default function Home() {
               },
             ].map((col) => (
               <div key={col.label}>
-                <p className="font-body text-[10px] tracking-widest uppercase text-white/30 mb-4">{col.label}</p>
+                <p className="font-body text-[10px] tracking-widest uppercase text-white/50 mb-3">{col.label}</p>
                 {col.links.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     target={"external" in link && link.external ? "_blank" : undefined}
                     rel={"external" in link && link.external ? "noopener noreferrer" : undefined}
-                    className="block font-body font-light text-sm text-white/40 hover:text-white/70 transition-colors mb-2.5"
+                    className="block font-body font-light text-[15px] md:text-sm text-white/60 hover:text-white transition-colors py-2"
                   >
                     {link.label}
                   </a>
@@ -826,25 +838,25 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="font-body font-light text-xs text-white/25">
+          <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <p className="font-body font-light text-xs text-white/50 order-2 md:order-1">
               © 2025 Piel Pantera Collections. Todos los derechos reservados.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 order-1 md:order-2">
               {[
                 { label: "Privacidad", href: "/privacidad" },
                 { label: "Términos", href: "/terminos" },
                 { label: "Cookies", href: "/cookies" },
               ].map((link) => (
-                <a key={link.label} href={link.href} className="font-body font-light text-xs text-white/20 hover:text-white/50 transition-colors">
+                <a key={link.label} href={link.href} className="font-body font-light text-xs text-white/50 hover:text-white transition-colors py-2">
                   {link.label}
                 </a>
               ))}
-              <a href="#inicio" className="font-body font-light text-xs text-white/20 hover:text-white/50 transition-colors">
+              <a href="#inicio" className="font-body font-light text-xs text-white/50 hover:text-white transition-colors py-2">
                 ↑ Inicio
               </a>
             </div>
-            <p className="font-body font-light text-xs text-white/15">
+            <p className="font-body font-light text-xs text-white/50 order-3">
               Carolina Salazar · Consultora de Imagen Estratégica
             </p>
           </div>

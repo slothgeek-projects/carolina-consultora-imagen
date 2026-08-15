@@ -11,22 +11,22 @@
 }
 
 /* ── Track ───────────────────────────────────────────────── */
+/* El gap va en el contenedor: con padding-left en los slides, el primero
+   quedaba 16px más ancho y desalineado respecto al resto en el loop. */
 .embla__container {
+  --slide-gap: 1rem;
   display: flex;
   touch-action: pan-y pinch-zoom;
-  /* gap via padding on slides so peek works correctly */
+  gap: var(--slide-gap);
 }
 
 /* ── Each slide ──────────────────────────────────────────── */
 .embla__slide {
-  flex: 0 0 calc(100% / var(--slides-per-view, 1));
+  flex: 0 0 calc(
+    (100% - (var(--slides-per-view, 1) - 1) * var(--slide-gap)) /
+      var(--slides-per-view, 1)
+  );
   min-width: 0;
-  padding-left: 1rem; /* gap between slides */
-}
-
-/* Remove left padding from first slide to avoid leading whitespace */
-.embla__slide:first-child {
-  padding-left: 0;
 }
 
 /* ── Controls (arrows + dots) ────────────────────────────── */
@@ -45,8 +45,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 1px solid rgba(var(--carrusel-ctl, 13, 13, 13), 0.25);
   background: transparent;
   color: rgba(var(--carrusel-ctl, 13, 13, 13), 0.5);
@@ -69,25 +69,37 @@
 .embla__dots {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
 }
 
+/* El botón mide 24x44 para ser tocable; el rombo de 6px se dibuja en ::before
+   para que el tamaño visual no cambie. */
 .embla__dot {
-  width: 6px;
-  height: 6px;
-  transform: rotate(45deg);
-  background: rgba(var(--carrusel-ctl, 13, 13, 13), 0.2);
+  position: relative;
+  width: 24px;
+  height: 44px;
+  background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+}
+
+.embla__dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: rgba(var(--carrusel-ctl, 13, 13, 13), 0.2);
   transition: background 0.2s, transform 0.2s;
 }
 
-.embla__dot:hover {
+.embla__dot:hover::before {
   background: rgba(var(--carrusel-ctl, 13, 13, 13), 0.6);
 }
 
-.embla__dot--selected {
+.embla__dot--selected::before {
   background: rgb(var(--carrusel-ctl, 13, 13, 13));
-  transform: rotate(45deg) scale(1.25);
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.25);
 }

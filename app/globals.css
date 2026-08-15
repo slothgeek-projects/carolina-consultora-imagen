@@ -36,3 +36,30 @@ body {
   60%       { box-shadow: 0 0 0 14px rgba(13,13,13,0); }
 }
 .whatsapp-float { animation: pulse-whatsapp 2.4s ease-out infinite; }
+
+/* El botón flotante respeta la barra de gestos de iOS/Android */
+.whatsapp-float {
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  right: calc(1.5rem + env(safe-area-inset-right));
+}
+
+/* Sin animaciones si el sistema lo pide. También evita que el contenido
+   quede invisible si el IntersectionObserver no llega a dispararse. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .section-animate,
+  .section-animate.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .whatsapp-float { animation: none; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
