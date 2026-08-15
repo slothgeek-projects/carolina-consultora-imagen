@@ -2,28 +2,6 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-@font-face {
-  font-family: 'EuclidCircularA';
-  src: url('/fonts/euclid-font/EuclidCircularATrial-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'EuclidCircularA';
-  src: url('/fonts/euclid-font/EuclidCircularATrial-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'EuclidCircularA';
-  src: url('/fonts/euclid-font/EuclidCircularATrial-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
   --color-ink:    #0D0D0D;
   --color-mid:    #9f6b51;
@@ -33,7 +11,7 @@
 
 @theme inline {
   --font-heading: var(--font-anticDidone);
-  --font-body: 'EuclidCircularA', system-ui, sans-serif;
+  --font-body: var(--font-montserrat), system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
