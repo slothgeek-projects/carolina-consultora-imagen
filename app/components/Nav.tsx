@@ -7,6 +7,7 @@ const AGENDA_URL = "/agendar";
 
 const links = [
   { label: "Servicios", href: "#servicios" },
+  { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Paquetes", href: "#paquetes" },
   { label: "Proceso", href: "#proceso" },
   { label: "FAQ", href: "#faq" },

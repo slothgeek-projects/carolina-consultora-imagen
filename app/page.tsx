@@ -4,31 +4,32 @@ import AnimatedSection from "./components/AnimatedSection";
 import FAQAccordion from "./components/FAQAccordion";
 import Carrusel from "./components/carrusel";
 import Image from "next/image";
+import {
+  Briefcase,
+  Building2,
+  Camera,
+  Check,
+  FileText,
+  Fingerprint,
+  Globe,
+  Handshake,
+  MessageSquare,
+  Palette,
+  ScanFace,
+  ShoppingBag,
+  Sparkles,
+  Target,
+  Video,
+} from "lucide-react";
 
 const WHATSAPP_URL =
   "https://wa.me/50670170734?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20la%20asesor%C3%ADa%20de%20imagen.";
 const AGENDA_URL = "/agendar";
 
-const IconVideo = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <rect x="2" y="7" width="15" height="12" rx="2" /><path d="m17 12 5-3v10l-5-3" />
-  </svg>
-);
-const IconCamera = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" /><circle cx="12" cy="13" r="3" />
-  </svg>
-);
-const IconFile = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" /><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
-  </svg>
-);
-const IconChat = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-  </svg>
-);
+const HERO_IMG = "/hero/bg.svg";
+
+/* lucide-react ya no incluye íconos de marca, así que WhatsApp e Instagram
+   siguen siendo SVG propios. El resto viene de lucide. */
 const IconWhatsApp = ({ size = 20 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -40,64 +41,68 @@ const IconInstagram = () => (
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
   </svg>
 );
-const IconCheck = ({ color = "currentColor" }: { color?: string }) => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-    <path d="M3 8l4 4 6-6" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-function ImgPlaceholder({ label, note, className = "aspect-[4/5]" }: { label: string; note: string; className?: string }) {
-  return (
-    <div className={`relative overflow-hidden bg-[#f4f4f4] ${className}`} role="img" aria-label={label}>
-      {/* TODO: Replace with <Image src="…" fill alt="…" className="object-cover" /> */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-subtle p-6">
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden>
-          <rect x="4" y="4" width="32" height="32" rx="2" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="15" cy="15" r="4" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M4 26l9-7 6 5 5-4 12 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-        <span className="text-[10px] tracking-widest uppercase text-center leading-relaxed">{note}</span>
-      </div>
-    </div>
-  );
-}
-
+/* Los perfiles "Empresas y Equipos" se retiraron: aún no hay
+   experiencia en ese segmento. */
 const profiles = [
   {
     title: "Profesionales en ascenso",
     pain: "Tu cargo ya es sólido, pero tu imagen todavía no refleja el nivel que alcanzaste.",
-    desc: "Para quienes buscan proyectar seguridad y credibilidad proporcional a su trayectoria profesional.",
   },
   {
     title: "Ejecutivos y Líderes",
     pain: "Lideras equipos, pero tu imagen aún no está liderando contigo.",
-    desc: "Para directores, gerentes y líderes que necesitan una presencia que proyecte autoridad real desde la primera mirada.",
   },
   {
     title: "Emprendedores y Marcas Personales",
     pain: "Eres tu propio negocio. Tu imagen debe construir tu marca antes de que hables.",
-    desc: "Para emprendedores cuya imagen personal es su principal activo comercial y de diferenciación.",
   },
   {
     title: "En Transición Personal o Profesional",
     pain: "Estás en un nuevo capítulo. Tu imagen debe acompañar quién estás siendo hoy.",
-    desc: "Para quienes viven cambios de carrera, nuevas etapas de vida o quieren redescubrir su estilo personal auténtico.",
+  },
+];
+
+const services = [
+  {
+    title: "Análisis de Colorimetría",
+    desc: "Identificamos tu subtono, temperatura y contraste natural para definir la paleta exacta que ilumina tu rostro y potencia tu presencia.",
+    icon: <Palette size={26} strokeWidth={1.2} />,
   },
   {
-    title: "Empresas y Equipos",
-    pain: "Tu empresa proyecta lo que proyectan las personas que la representan.",
-    desc: "Para marcas que desean fortalecer la imagen de su equipo de cara a clientes, inversores y mercado.",
+    title: "Consultoría de Imagen Personal",
+    desc: "Un estilo propio, coherente y sostenible. Definimos qué te funciona según tu cuerpo, tu vida real y quién quieres ser hoy.",
+    icon: <Sparkles size={26} strokeWidth={1.2} />,
+  },
+  {
+    title: "Consultoría de Imagen Profesional",
+    desc: "Alineamos tu presencia visual con tu rol, tu sector y tus objetivos de carrera para que comuniques autoridad antes de hablar.",
+    icon: <Briefcase size={26} strokeWidth={1.2} />,
+  },
+  {
+    title: "Consultoría de Imagen Empresarial",
+    desc: "Estrategia de imagen para líderes y marcas personales que representan a su organización frente a clientes, inversores y mercado.",
+    icon: <Building2 size={26} strokeWidth={1.2} />,
+  },
+  {
+    title: "Análisis Corporal y Facial",
+    desc: "Morfología, proporciones, postura y facciones: la base técnica que hace que cada recomendación sea precisa y no genérica.",
+    icon: <ScanFace size={26} strokeWidth={1.2} />,
+  },
+  {
+    title: "Personal Shopper",
+    desc: "Aplicamos lo aprendido: seleccionamos juntas prendas concretas para tu cuerpo, tu colorimetría y tus objetivos. Online o híbrido.",
+    icon: <ShoppingBag size={26} strokeWidth={1.2} />,
   },
 ];
 
 const steps = [
   { number: "01", title: "Entrevista inicial", description: "Conocemos tu historia, objetivos, estilo actual y lo que deseas transformar." },
   { number: "02", title: "Definición de objetivos", description: "Establecemos metas claras según tu contexto personal, profesional o empresarial." },
-  { number: "03", title: "Análisis corporal y morfología", description: "Medidas, proporciones, postura y biotipo corporal para recomendaciones precisas." },
+  { number: "03", title: "Análisis corporal", description: "Medidas, proporciones, postura y biotipo corporal para recomendaciones precisas." },
   { number: "04", title: "Análisis facial", description: "Forma del rostro, facciones y armonía para definir cortes, estilos y accesorios." },
-  { number: "05", title: "Colorimetría personal", description: "Identificación de tonos, subtonos y paleta ideal que potencie tu imagen." },
+  { number: "05", title: "Colorimetría", description: "Identificación de tonos, subtonos y paleta ideal que potencie tu imagen." },
   { number: "06", title: "Diagnóstico y retroalimentación", description: "Revisión integral del análisis y ajustes personalizados contigo." },
-  { number: "07", title: "Guía de recomendaciones", description: "Prendas, colores, accesorios, maquillaje y cabello: tu manual personalizado." },
+  { number: "07", title: "Revista personal", description: "Prendas, colores, accesorios, maquillaje y cabello: tu manual personalizado, entregado también como revista." },
 ];
 
 const benefits = [
@@ -110,52 +115,52 @@ const benefits = [
 ];
 
 const testimonialSlides = [
-  <div key="t1" className="bg-white border border-edge p-8 md:p-12 relative">
-    <div className="absolute top-6 left-8 font-heading text-5xl text-edge leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-mid pt-6 mb-8">
+  <div key="t1" className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-12 relative">
+    <div className="absolute top-6 left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
+    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-6 mb-8">
       Siempre sentí que mi ropa no me representaba del todo. Después de la asesoría llegué a reuniones importantes sintiéndome la{" "}
-      <strong className="font-medium text-ink">versión más poderosa de mí misma</strong>. El cambio fue inmediato — no solo en cómo me veía, sino en cómo me percibían los demás.
+      <strong className="font-medium text-white">versión más poderosa de mí misma</strong>. El cambio fue inmediato — no solo en cómo me veía, sino en cómo me percibían los demás.
     </p>
     <div className="flex items-center gap-4">
-      <div className="w-14 h-14 rounded-full bg-[#f4f4f4] border border-edge flex-shrink-0 overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center text-subtle text-xs">Foto</div>
+      <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex-shrink-0 overflow-hidden">
+        <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
       </div>
       <div>
-        <p className="font-body font-medium text-sm text-ink">Ana Laura M.</p>
-        <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mt-0.5">Directora de Marketing</p>
+        <p className="font-body font-medium text-sm text-white">Ana Laura M.</p>
+        <p className="font-body font-light text-xs text-white/50 tracking-wide uppercase mt-0.5">Directora de Marketing</p>
       </div>
     </div>
   </div>,
 
-  <div key="t2" className="bg-white border border-edge p-8 md:p-12 relative">
-    <div className="absolute top-6 left-8 font-heading text-5xl text-edge leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-mid pt-6 mb-8">
-      <strong className="font-medium text-ink">Gasto la mitad y me siento el doble de segura.</strong> Carolina me enseñó exactamente qué prendas funcionan para mi cuerpo, mi colorimetría y mis objetivos. Por primera vez en mi vida compro con criterio, no por impulso.
+  <div key="t2" className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-12 relative">
+    <div className="absolute top-6 left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
+    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-6 mb-8">
+      <strong className="font-medium text-white">Gasto la mitad y me siento el doble de segura.</strong> Carolina me enseñó exactamente qué prendas funcionan para mi cuerpo, mi colorimetría y mis objetivos. Por primera vez en mi vida compro con criterio, no por impulso.
     </p>
     <div className="flex items-center gap-4">
-      <div className="w-14 h-14 rounded-full bg-[#f4f4f4] border border-edge flex-shrink-0 overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center text-subtle text-xs">Foto</div>
+      <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex-shrink-0 overflow-hidden">
+        <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
       </div>
       <div>
-        <p className="font-body font-medium text-sm text-ink">Valeria R.</p>
-        <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mt-0.5">Emprendedora</p>
+        <p className="font-body font-medium text-sm text-white">Valeria R.</p>
+        <p className="font-body font-light text-xs text-white/50 tracking-wide uppercase mt-0.5">Emprendedora</p>
       </div>
     </div>
   </div>,
 
-  <div key="t3" className="bg-white border border-edge p-8 md:p-12 relative">
-    <div className="absolute top-6 left-8 font-heading text-5xl text-edge leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-mid pt-6 mb-8">
+  <div key="t3" className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-12 relative">
+    <div className="absolute top-6 left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
+    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-6 mb-8">
       Como ejecutivo nunca le había dado importancia real a la imagen. Hoy entiendo que era{" "}
-      <strong className="font-medium text-ink">mi activo más desaprovechado</strong>. Después de la asesoría, varios clientes comentaron que notaron algo diferente — más presencia, más autoridad.
+      <strong className="font-medium text-white">mi activo más desaprovechado</strong>. Después de la asesoría, varios clientes comentaron que notaron algo diferente — más presencia, más autoridad.
     </p>
     <div className="flex items-center gap-4">
-      <div className="w-14 h-14 rounded-full bg-[#f4f4f4] border border-edge flex-shrink-0 overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center text-subtle text-xs">Foto</div>
+      <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex-shrink-0 overflow-hidden">
+        <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
       </div>
       <div>
-        <p className="font-body font-medium text-sm text-ink">Ricardo F.</p>
-        <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mt-0.5">Gerente General</p>
+        <p className="font-body font-medium text-sm text-white">Ricardo F.</p>
+        <p className="font-body font-light text-xs text-white/50 tracking-wide uppercase mt-0.5">Gerente General</p>
       </div>
     </div>
   </div>,
@@ -167,87 +172,72 @@ export default function Home() {
       <Nav />
 
       {/* ── 1. HERO ─────────────────────────────────────────────── */}
-      <section id="inicio" className="relative min-h-screen flex max-w-7xl mx-auto">
-        <Image src="/hero/bg.svg" alt="Hero" className="absolute top-0 left-0 w-full h-full object-cover" width={1920} height={1080} />
-
-        <div className="relative grid w-full" style={{ gridTemplateColumns: "60fr 40fr" }}>
-          {/* Left — text, white bg */}
-          <div className="flex flex-col justify-end px-10 lg:px-16 pt-36 pb-16">
-            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-7">
-              Carolina Salazar · Consultora de Imagen Profesional
+      <section id="inicio" className="relative bg-white">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] items-stretch min-h-screen">
+          {/* Left — texto */}
+          <div className="flex flex-col justify-center px-6 lg:px-12 pt-32 pb-16 lg:py-32 order-2 lg:order-1 z-10 relative">
+            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-mid mb-7">
+              Carolina Salazar · Piel Pantera
             </p>
-            <h1 className="font-heading text-[clamp(44px,5.5vw,70px)] font-normal leading-[1.02] tracking-[-0.01em] text-ink mb-7">
-              Transforma tu imagen. Proyecta seguridad.{" "}
-              <em className="italic text-mid">Refleja exactamente quién eres.</em>
+            <h1 className="font-heading text-[clamp(42px,5.2vw,68px)] font-normal leading-[1.04] tracking-[-0.01em] text-ink mb-7">
+              Consultora de Imagen{" "}
+              <em className="italic text-mid">Estratégica</em>
             </h1>
             <div className="w-8 h-px bg-ink mb-6" />
-            <p className="font-body font-light text-[15px] leading-[1.85] text-mid max-w-[420px] mb-9">
-              Asesoría de Imagen Personal, Profesional y Empresarial online. Un proceso
-              integral que alinea tu presencia visual con tu identidad, tus metas y el
-              nivel que ya tienes — para que cada espacio que ocupes comunique exactamente
-              quién eres.
+            {/* Perfil profesional condensado — versión corta de "Sobre mí" */}
+            <p className="font-body font-light text-[15px] leading-[1.85] max-w-[460px] mb-8">
+              Asesora de Imagen Internacional certificada por Garbo Imagen. Acompaño a
+              profesionales, líderes y emprendedores a alinear su presencia visual con su
+              identidad y sus metas — con un método integral, 100% online.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href={AGENDA_URL} className="inline-block px-8 py-4 bg-ink text-white font-body text-[10px] tracking-[0.14em] uppercase hover:bg-[#333] transition-colors duration-200">
-                Agendar mi asesoría
+
+            {/* Pills — 3 servicios destacados */}
+            <ul className="flex flex-wrap gap-2 mb-9 list-none">
+              {[
+                "Consultoría de Imagen Estratégica",
+                "Análisis de Colorimetría",
+                "Personal Shopper",
+              ].map((pill) => (
+                <li
+                  key={pill}
+                  className="font-body text-[10px] tracking-[0.12em] uppercase border border-mid px-4 py-2"
+                >
+                  {pill}
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA único */}
+            <div>
+              <a
+                href="#servicios"
+                className="inline-block px-9 py-4 bg-ink text-white font-body text-[10px] tracking-[0.14em] uppercase hover:bg-[#333] transition-colors duration-200"
+              >
+                Ver todos los servicios
               </a>
-              <a href="#paquetes" className="inline-block px-8 py-4 border border-edge text-ink font-body text-[10px] tracking-[0.14em] uppercase hover:border-ink transition-colors duration-200">
-                Ver paquetes
-              </a>
-            </div>
-            <div className="flex items-center gap-3 mt-auto pt-10 font-body text-[9px] tracking-[0.16em] uppercase text-subtle">
-              <div className="w-7 h-px bg-edge" />
-              <span>Descubrir</span>
             </div>
           </div>
 
-
-        </div>
-      </section>
-
-      {/* ── 2. ¿QUÉ ES LA ASESORÍA? ─────────────────────────────── */}
-      <section id="servicios" className="relative py-20 md:py-28 bg-white" style={{ background: "linear-gradient(to right, transparent 50%, var(--color-ink) 50%)" }}>
-        <Image src="/hero/que-es.svg" alt="Hero" className="absolute top-0 left-0 w-1/2 h-full object-cover" width={1000} height={1000} />
-        <div className="relative grid grid-cols-2 max-w-7xl mx-auto">
-          <div>
-
+          {/* Right — foto nueva a color */}
+          <div className="absolute top-0 w-full right-0 min-h-[420px] lg:min-h-screen order-1 lg:order-2">
+            <Image
+              src={HERO_IMG}
+              alt="Carolina Salazar, consultora de imagen estratégica"
+              fill
+              preload
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
-          <AnimatedSection className="space-y-5 px-12">
-            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white">
-              ¿Qué es la Asesoría de Imagen personal?
-            </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-white leading-[1.1]">
-              La asesoría de imagen es el proceso más poderoso para alinear{" "}
-              <em className="italic text-white">cómo te ves</em> y{" "}
-              <em className="italic text-white">quién realmente eres</em>
-            </h2>
-            <div className="w-7 h-px bg-ink" />
-            <p className="font-body font-light text-[15px] leading-[1.9] text-white max-w-2xl mx-auto">
-              Va mucho más allá de la ropa o la moda. Es un análisis estratégico y
-              profundamente personalizado de tu{" "}
-              <strong className="font-medium text-white">colorimetría, morfología, estilo de vida y comunicación visual</strong>{" "}
-              — diseñado para que proyectes una imagen coherente, auténtica y alineada con tus metas.
-            </p>
-            <blockquote className="font-heading text-[22px] italic text-white leading-relaxed max-w-xl mx-auto border-l border-white pl-6 text-left my-6">
-              &ldquo;No se trata de cambiar quién eres,<br />
-              se trata de que el mundo vea lo que tú ya eres.&rdquo;
-            </blockquote>
-            <a
-              href="#paquetes"
-              className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-white border-b border-edge pb-px hover:border-ink transition-colors duration-200"
-            >
-              Conocer los servicios →
-            </a>
-          </AnimatedSection>
         </div>
       </section>
 
-      {/* ── 3. ¿PARA QUIÉN? ─────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
+      {/* ── 2. PROPÓSITO ────────────────────────────────────────── */}
+      <section id="proposito" className="py-20 md:py-28 bg-white border-t border-edge">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <AnimatedSection className="text-center mb-14 space-y-4 max-w-3xl mx-auto">
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle">
-              Servicios de asesoría de imagen online
+              Para quién es
             </p>
             <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
               Diseñada para quienes entienden que su imagen{" "}
@@ -262,8 +252,8 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          {/* 5 profile cards — autoscroll carousel */}
-          <div className="mb-14">
+          {/* Perfiles de cliente — carrusel */}
+          <div>
             <Carrusel
               mode="autoscroll"
               slidesPerView={{ default: 1, sm: 2, lg: 3 }}
@@ -278,160 +268,115 @@ export default function Home() {
                   <p className="font-heading text-[18px] italic text-mid mb-3 leading-snug">
                     {p.pain}
                   </p>
-                  <p className="font-body font-light text-sm leading-[1.8] text-subtle">
-                    {p.desc}
-                  </p>
                 </div>
               ))}
             />
           </div>
         </div>
       </section>
-      <section className="bg-ink text-white" style={{ backgroundImage: "url(/hero/bg-decorator-phanter.png)", backgroundPosition: 'left', backgroundRepeat: 'no-repeat', backgroundSize: "auto 100%", backgroundBlendMode: "color-dodge" }}>
-        {/* Quote band */}
-        <AnimatedSection>
-          <div className="text-center py-14 border-edge">
-            <p className="font-heading text-[22px] md:text-[28px] italic">
-              &ldquo;Si ya sabes quién eres, es hora de que el mundo también lo vea.&rdquo;
-            </p>
-            <div className="mt-8">
-              <a
-                href={AGENDA_URL}
-                className="inline-block px-10 py-4 bg-white text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-[#333] transition-colors duration-200"
-              >
-                Agendar mi asesoría
-              </a>
-            </div>
-          </div>
-        </AnimatedSection>
-      </section>
-      {/* ── 4. PROCESO ──────────────────────────────────────────── */}
-      <section id="proceso" className="py-20 md:py-28 bg-white">
+
+      {/* ── 3. SERVICIOS ────────────────────────────────────────── */}
+      <section id="servicios" className="py-20 md:py-28 bg-white" style={{background: "linear-gradient(to bottom, #f9f9f9 0%, #fff 100%)"}}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <AnimatedSection className="text-center mb-14">
-            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
-              Metodología
+          <AnimatedSection className="text-center mb-14 space-y-4 max-w-3xl mx-auto">
+            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle">
+              Servicios de asesoría de imagen online
             </p>
             <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
-              El proceso paso a paso
+              ¿Qué es la asesoría de imagen personal?
             </h2>
-            <div className="w-7 h-px bg-ink mx-auto mt-5" />
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <div className="max-w-2xl mx-auto">
-              <Carrusel
-                mode="autoplay"
-                slidesPerView={1}
-                nodes={steps.map((s) => (
-                  <div
-                    key={s.number}
-                    className="bg-white border border-edge px-8 py-12 md:px-16 md:py-16 min-h-[280px] flex flex-col justify-center relative overflow-hidden"
-                  >
-                    <span
-                      className="absolute right-6 top-1/2 -translate-y-1/2 font-heading text-[120px] font-normal leading-none text-edge select-none pointer-events-none"
-                      aria-hidden
-                    >
-                      {s.number}
-                    </span>
-                    <span className="font-body text-[10px] tracking-[0.14em] uppercase text-subtle mb-4">
-                      Paso {s.number} de {steps.length}
-                    </span>
-                    <h3 className="font-heading text-3xl md:text-4xl font-normal text-ink mb-4 leading-snug relative z-10">
-                      {s.title}
-                    </h3>
-                    <p className="font-body font-light text-base leading-[1.8] text-mid max-w-xl relative z-10">
-                      {s.description}
-                    </p>
-                  </div>
-                ))}
-              />
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ── 5. MODALIDAD ONLINE ─────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <AnimatedSection className="text-center mb-14 max-w-2xl mx-auto">
-            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
-              Dónde estés
+            <div className="w-7 h-px bg-ink mx-auto" />
+            <p className="font-body font-light text-[15px] leading-[1.9] text-mid">
+              Va mucho más allá de la ropa o la moda. Es un análisis estratégico y
+              profundamente personalizado de tu{" "}
+              <strong className="font-medium text-ink">colorimetría, morfología, estilo de vida y comunicación visual</strong>{" "}
+              — diseñado para que proyectes una imagen coherente, auténtica y alineada con tus metas.
             </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
-              Asesoría 100% online,<br />sin límites de ubicación.
-            </h2>
-            <div className="w-7 h-px bg-ink mx-auto mt-5" />
           </AnimatedSection>
 
-          {/* 3 pillars */}
+          {/* Cuadrícula de servicios */}
           <div
-            className="grid grid-cols-1 md:grid-cols-3 mb-14"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
             style={{ gap: "1px", background: "#E0E0E0" }}
           >
-            {[
-              {
-                title: "Personalizada",
-                desc: "Cada proceso es único. No hay plantillas ni fórmulas genéricas — tu asesoría se construye 100% sobre quién eres tú.",
-                icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden={true}><circle cx="12" cy="8" r="5" /><path d="M3 21a9 9 0 0 1 18 0" /></svg>,
-              },
-              {
-                title: "Acompañamiento Real",
-                desc: "No recibes un PDF y te quedas sola. Hay sesiones en vivo, retroalimentación directa y seguimiento en cada etapa del proceso.",
-                icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden={true}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
-              },
-              {
-                title: "Resultados Concretos",
-                desc: "Terminas con una guía visual lista para usar, claridad absoluta sobre qué te funciona y la confianza de proyectarte con coherencia.",
-                icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden={true}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>,
-              },
-            ].map((pillar) => (
-              <div key={pillar.title} className="bg-white p-8 hover:bg-[#fafafa] transition-colors duration-200">
-                <span className="text-ink mb-4 block">{pillar.icon}</span>
-                <h3 className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-3">
-                  {pillar.title}
-                </h3>
-                <p className="font-body font-light text-sm leading-[1.8] text-mid">{pillar.desc}</p>
-              </div>
+            {services.map((s, i) => (
+              <AnimatedSection key={s.title} delay={i * 60}>
+                <div className="bg-white p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200 h-full flex flex-col">
+                  <span className="text-ink mb-5 block">{s.icon}</span>
+                  <h3 className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-3">
+                    {s.title}
+                  </h3>
+                  <p className="font-body font-light text-sm leading-[1.8] text-mid">{s.desc}</p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
 
-          {/* Tools block */}
-          <AnimatedSection delay={100}>
-            <div className="bg-ink p-10 md:p-14 grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/50 mb-6">
-                  Herramientas de trabajo
-                </p>
-                <div className="grid grid-cols-2 gap-px bg-white/10">
-                  {[
-                    { name: "Videollamadas", subtitle: "Zoom · Google Meet", icon: <IconVideo /> },
-                    { name: "Análisis fotográfico", subtitle: "Fotografías de alta calidad", icon: <IconCamera /> },
-                    { name: "Guías visuales", subtitle: "Canva · Google Drive", icon: <IconFile /> },
-                    { name: "Seguimiento", subtitle: "WhatsApp directo", icon: <IconChat /> },
-                  ].map((tool) => (
-                    <div key={tool.name} className="flex flex-col gap-2 p-4 bg-ink hover:bg-white/5 transition-colors duration-200">
-                      <span className="text-white/60">{tool.icon}</span>
-                      <p className="font-body font-medium text-sm text-white">{tool.name}</p>
-                      <p className="font-body font-light text-xs text-white/40">{tool.subtitle}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <Image
-                  src='hero/online.svg'
-                  alt="Servicio Online"
-                  width={1350}
-                  height={1080}
-                  className="aspect-[5/4]"
-                />
-              </div>
-            </div>
+          <AnimatedSection delay={120} className="text-center mt-12">
+            <a
+              href="#paquetes"
+              className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-ink border-b border-ink pb-px hover:text-mid hover:border-mid transition-colors duration-200"
+            >
+              Ver paquetes y precios →
+            </a>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ── 6. PAQUETES ─────────────────────────────────────────── */}
+      {/* ── 4. SOBRE MÍ ─────────────────────────────────────────── */}
+      <section id="sobre-mi" className="py-20 md:py-28 bg-white border-t border-edge">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <AnimatedSection>
+              {/* TODO: reemplazar por la foto definitiva de Carolina si hay una nueva */}
+              <Image
+                src="/hero/quiensoy.png"
+                alt="Carolina Salazar, asesora de imagen internacional"
+                width={1080}
+                height={1350}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full aspect-[4/5] object-cover"
+              />
+            </AnimatedSection>
+
+            {/* TODO: revisar y ajustar este texto con la bio real de Carolina */}
+            <AnimatedSection delay={100}>
+              <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
+                Sobre mí
+              </p>
+              <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1] mb-5">
+                Carolina Salazar
+              </h2>
+              <div className="w-7 h-px bg-ink mb-6" />
+              <p className="font-body font-light text-[15px] leading-[1.9] text-mid mb-5">
+                Soy <strong className="font-medium text-ink">consultora de imagen certificada</strong>, 
+                especializada en imagen personal, profesional y empresarial. Trabajo de forma 100% online 
+                con profesionales, líderes y emprendedores de todo el mundo de habla hispana que saben que 
+                su presencia visual es parte de su estrategia — no un accesorio.
+              </p>
+              <p className="font-body font-light text-[15px] leading-[1.9] text-mid mb-8">
+                Mi enfoque no es sobre moda ni tendencias. Es sobre identidad: entender quién eres, dónde 
+                vas y asegurarte de que tu imagen trabaje a tu favor antes de que abras la boca.
+              </p>
+              <p className="font-body font-light text-[15px] leading-[1.9] text-mid mb-8">
+                Cada proceso es profundamente personalizado — porque no existe una fórmula universal para 
+                proyectar autoridad, autenticidad y presencia. Lo que sí existe es un método. Y ese método es Piel Pantera.
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-9 py-4 border border-ink text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
+              >
+                <IconWhatsApp size={16} />
+                Hablemos de tu imagen
+              </a>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. PAQUETES ─────────────────────────────────────────── */}
       <section id="paquetes" className="py-20 md:py-28 bg-white border-t border-edge">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <AnimatedSection className="text-center mb-12">
@@ -468,7 +413,7 @@ export default function Home() {
                     "Guía de recomendaciones esencial",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex-shrink-0"><IconCheck /></span>
+                      <span className="mt-0.5 flex-shrink-0"><Check size={16} strokeWidth={1.5} className="text-ink" /></span>
                       <span className="font-body font-light text-sm leading-[1.7] text-mid">{item}</span>
                     </li>
                   ))}
@@ -515,7 +460,7 @@ export default function Home() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="mt-0.5 flex-shrink-0">
-                        <IconCheck color="#ffffff" />
+                        <Check size={16} strokeWidth={1.5} className="text-white" />
                       </span>
                       <span className="font-body font-light text-sm leading-[1.7] text-white/80">{item}</span>
                     </li>
@@ -553,7 +498,7 @@ export default function Home() {
                     "Seguimiento personalizado extendido",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex-shrink-0"><IconCheck /></span>
+                      <span className="mt-0.5 flex-shrink-0"><Check size={16} strokeWidth={1.5} className="text-ink" /></span>
                       <span className="font-body font-light text-sm leading-[1.7] text-mid">{item}</span>
                     </li>
                   ))}
@@ -580,89 +525,209 @@ export default function Home() {
                 Cupos limitados por mes — agenda con anticipación
               </p>
             </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
-            {/* Personal Shopper add-on */}
-            <div className="mt-10 border border-edge relative">
-              <div className="grid grid-cols-2 items-center">
-                <Image src={`/hero/personal-shopper.svg`} alt="Personal Shopper" width={1000} height={1000} className="aspect-[5/4]" />
-                <div className="max-w-2xl mx-auto text-center p-8 md:p-10 ">
-                  <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-ink border border-edge px-3 py-1 mb-4">
-                    Add-on · Personal Shopper
-                  </span>
-                  <h3 className="font-heading text-[24px] md:text-[28px] font-normal text-ink mb-4">
-                    Saber es solo el primer paso.
-                  </h3>
-                  <p className="font-body font-light text-[15px] leading-[1.9] text-mid mb-6">
-                    El Personal Shopper te acompaña a aplicar lo aprendido: seleccionamos juntas prendas
-                    específicas que funcionan para tu cuerpo, tu colorimetría y tus objetivos, de forma
-                    online o híbrida. Disponible como complemento de cualquier paquete.
-                  </p>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-3 border border-ink text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
+      {/* ── 6. PASO A PASO ──────────────────────────────────────── */}
+      <section id="proceso" className="py-20 md:py-28 bg-white border-t border-edge">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <AnimatedSection className="text-center mb-14">
+            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
+              Metodología
+            </p>
+            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+              El proceso paso a paso
+            </h2>
+            <div className="w-7 h-px bg-ink mx-auto mt-5" />
+          </AnimatedSection>
+
+          {/* Cuadrícula de 7 pasos + celda de cierre */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            style={{ gap: "1px", background: "#E0E0E0" }}
+          >
+            {steps.map((s, i) => (
+              <AnimatedSection key={s.number} delay={i * 50}>
+                <div className="bg-white p-8 h-full relative overflow-hidden hover:bg-[#fafafa] transition-colors duration-200">
+                  <span
+                    className="absolute right-4 top-4 font-heading text-[56px] font-normal leading-none text-edge select-none pointer-events-none"
+                    aria-hidden
                   >
-                    <IconWhatsApp size={16} />
-                    Consultar sobre Personal Shopper
-                  </a>
+                    {s.number}
+                  </span>
+                  <span className="font-body text-[10px] tracking-[0.14em] uppercase text-subtle mb-4 block relative z-10">
+                    Paso {s.number}
+                  </span>
+                  <h3 className="font-heading text-[22px] font-normal text-ink mb-3 leading-snug relative z-10">
+                    {s.title}
+                  </h3>
+                  <p className="font-body font-light text-sm leading-[1.8] text-mid relative z-10">
+                    {s.description}
+                  </p>
                 </div>
+              </AnimatedSection>
+
+            ))}
+            <div className="bg-white p-8 h-full relative overflow-hidden" />
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. MODALIDAD ONLINE ─────────────────────────────────── */}
+      <section id="online" className="py-20 md:py-28 bg-white border-t border-edge">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <AnimatedSection className="text-center mb-14 max-w-2xl mx-auto">
+            <span className="inline-block text-ink mb-6">
+              <Globe size={30} strokeWidth={1} />
+            </span>
+            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
+              Dónde estés
+            </p>
+            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+              Asesoría 100% online,<br />sin límites de ubicación.
+            </h2>
+            <div className="w-7 h-px bg-ink mx-auto mt-5" />
+          </AnimatedSection>
+
+          {/* 3 pilares — íconos rediseñados */}
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 mb-14"
+            style={{ gap: "1px", background: "#E0E0E0" }}
+          >
+            {[
+              {
+                title: "Personalizada",
+                desc: "Cada proceso es único. No hay plantillas ni fórmulas genéricas — tu asesoría se construye 100% sobre quién eres tú.",
+                icon: <Fingerprint size={30} strokeWidth={1} />,
+              },
+              {
+                title: "Acompañamiento Real",
+                desc: "No recibes un PDF y te quedas sola. Hay sesiones en vivo, retroalimentación directa y seguimiento en cada etapa del proceso.",
+                icon: <Handshake size={30} strokeWidth={1} />,
+              },
+              {
+                title: "Resultados Concretos",
+                desc: "Terminas con una guía visual lista para usar, claridad absoluta sobre qué te funciona y la confianza de proyectarte con coherencia.",
+                icon: <Target size={30} strokeWidth={1} />,
+              },
+            ].map((pillar) => (
+              <div key={pillar.title} className="bg-white p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200">
+                <span className="text-ink mb-6 block">{pillar.icon}</span>
+                <h3 className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-3">
+                  {pillar.title}
+                </h3>
+                <p className="font-body font-light text-sm leading-[1.8] text-mid">{pillar.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Tools block */}
+          <AnimatedSection delay={100}>
+            <div className="bg-ink p-10 md:p-14 grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/50 mb-6">
+                  Herramientas de trabajo
+                </p>
+                <div className="grid grid-cols-2 gap-px bg-white/10">
+                  {[
+                    { name: "Videollamadas", subtitle: "Zoom · Google Meet", icon: <Video size={22} strokeWidth={1.5} /> },
+                    { name: "Análisis fotográfico", subtitle: "Fotografías de alta calidad", icon: <Camera size={22} strokeWidth={1.5} /> },
+                    { name: "Guías visuales", subtitle: "Canva · Google Drive", icon: <FileText size={22} strokeWidth={1.5} /> },
+                    { name: "Seguimiento", subtitle: "WhatsApp directo", icon: <MessageSquare size={22} strokeWidth={1.5} /> },
+                  ].map((tool) => (
+                    <div key={tool.name} className="flex flex-col gap-2 p-4 bg-ink hover:bg-white/5 transition-colors duration-200">
+                      <span className="text-white/60">{tool.icon}</span>
+                      <p className="font-body font-medium text-sm text-white">{tool.name}</p>
+                      <p className="font-body font-light text-xs text-white/40">{tool.subtitle}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <Image
+                  src="/hero/online.svg"
+                  alt="Sesión de asesoría de imagen por videollamada"
+                  width={1350}
+                  height={1080}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="w-full aspect-[5/4] object-cover"
+                />
               </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ── 7. TESTIMONIOS ──────────────────────────────────────────────── */}
-      <section id="testimonios" className="py-20 md:py-28 bg-white border-t border-edge">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <AnimatedSection className="text-center mb-14">
-            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
-              Prueba social
-            </p>
-            <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
-              Testimonios de clientes
-            </h2>
-            <div className="w-7 h-px bg-ink mx-auto mt-5" />
-          </AnimatedSection>
+      {/* ── 8. TESTIMONIOS ──────────────────────────────────────── */}
+      <section id="testimonios" className="border-t border-edge bg-ink">
+        {/* Resultados */}
+        <div className="py-20 md:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <AnimatedSection className="text-center mb-12">
+              <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
+                Resultados
+              </p>
+              <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-ink leading-[1.1]">
+                Lo que te llevas
+              </h2>
+              <div className="w-7 h-px bg-ink mx-auto mt-5" />
+            </AnimatedSection>
 
-          {/* 6 benefit cards — 1px grid */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-14"
-            style={{ gap: "1px", background: "#E0E0E0" }}
-          >
-            {benefits.map((b, i) => (
-              <AnimatedSection key={b.title} delay={i * 60}>
-                <div className="bg-white p-6 hover:bg-[#fafafa] transition-colors duration-200 h-full">
-                  <p className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-2">
-                    {b.title}
-                  </p>
-                  <p className="font-body font-light text-sm leading-[1.8] text-mid">{b.desc}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          {/* Testimonials carousel */}
-          <AnimatedSection delay={100}>
-            <Carrusel nodes={testimonialSlides} slidesPerView={1} mode="autoplay" />
-          </AnimatedSection>
-
-          <AnimatedSection delay={200} className="text-center mt-12">
-            <p className="font-body font-light text-[15px] text-mid mb-6">
-              ¿Lista para escribir tu propio caso de éxito?
-            </p>
-            <a
-              href={AGENDA_URL}
-              className="inline-block px-10 py-4 bg-ink text-white font-body text-[10px] tracking-[0.08em] uppercase hover:bg-[#333] transition-colors duration-200"
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+              style={{ gap: "1px", background: "#E0E0E0" }}
             >
-              Agendar mi asesoría
-            </a>
-          </AnimatedSection>
+              {benefits.map((b, i) => (
+                <AnimatedSection key={b.title} delay={i * 60}>
+                  <div className="bg-white p-6 hover:bg-[#fafafa] transition-colors duration-200 h-full">
+                    <p className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-2">
+                      {b.title}
+                    </p>
+                    <p className="font-body font-light text-sm leading-[1.8] text-mid">{b.desc}</p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonios */}
+        <div className="relative py-20 md:py-28 overflow-hidden">
+          <div className="relative max-w-5xl mx-auto px-6 lg:px-12">
+            <AnimatedSection className="text-center mb-14">
+              <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/50 mb-4">
+                Prueba social
+              </p>
+              <h2 className="font-heading text-[clamp(30px,4vw,46px)] font-normal text-white leading-[1.1]">
+                Testimonios de clientes
+              </h2>
+              <div className="w-7 h-px bg-white/60 mx-auto mt-5" />
+            </AnimatedSection>
+
+            <AnimatedSection
+              delay={100}
+              style={{ "--carrusel-ctl": "255, 255, 255" } as React.CSSProperties}
+            >
+              <Carrusel nodes={testimonialSlides} slidesPerView={1} mode="autoplay" />
+            </AnimatedSection>
+
+            <AnimatedSection delay={200} className="text-center mt-12">
+              <p className="font-body font-light text-[15px] text-white/70 mb-6">
+                ¿Lista para escribir tu propio caso de éxito?
+              </p>
+              <a
+                href={AGENDA_URL}
+                className="inline-block px-10 py-4 bg-white text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200"
+              >
+                Agendar mi asesoría
+              </a>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      {/* ── 8. FAQ ──────────────────────────────────────────────── */}
+      {/* ── 9. FAQ ──────────────────────────────────────────────── */}
       <section id="faq" className="py-20 md:py-28 bg-white border-t border-edge">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <AnimatedSection className="text-center mb-14">
@@ -696,97 +761,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 9. CTA FINAL ────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-ink border-t border-white/10">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <AnimatedSection>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px w-16 bg-white/20" />
-              <div className="w-1 h-1 bg-white/40 rotate-45" />
-              <div className="h-px w-16 bg-white/20" />
-            </div>
-            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/40 mb-4">
-              Modalidad online · Sin compromiso
-            </p>
-            <h2 className="font-heading text-[clamp(32px,4.5vw,52px)] font-normal text-white leading-[1.1] mb-6">
-              Tu imagen ya está lista para reflejarte.
-              <br />
-              <em className="italic text-white/60">Solo falta el primer paso.</em>
-            </h2>
-            <p className="font-body font-light text-[15px] leading-[1.9] text-white/55 mb-10 max-w-md mx-auto">
-              Escríbeme directamente y te oriento sobre el paquete que mejor se adapta
-              a tus necesidades y objetivos. Sin compromiso, respondo en menos de 24 horas.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-white text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200"
-              >
-                <IconWhatsApp size={18} />
-                Contactar por WhatsApp
-              </a>
-              <a
-                href={AGENDA_URL}
-                className="inline-flex items-center justify-center gap-3 px-10 py-4 border border-white/25 text-white font-body text-[10px] tracking-[0.08em] uppercase hover:border-white/60 transition-colors duration-200"
-              >
-                Agendar directamente
-              </a>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
       {/* ── FOOTER ──────────────────────────────────────────────── */}
-      <footer className="bg-[#111]">
-        {/* Pre-footer */}
-        <div className="border-b border-white/10 bg-ink">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14 md:py-18 grid md:grid-cols-2 gap-12 items-center">
-            <div className="max-w-sm">
-              <Image
-                src='/hero/carolina.svg'
-                alt="Carolina"
-                width={1080}
-                height={1350}
-                className="aspect-[4/5]"
-              />
-            </div>
-            <div>
-              <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/40 mb-6">Hablemos</p>
-              <h2 className="font-heading text-[28px] md:text-[36px] font-normal text-white mb-4 leading-snug">
-                ¿Lista para transformar tu imagen?
-              </h2>
-              <p className="font-body font-light text-[15px] leading-[1.9] text-white/50 mb-8">
-                Escríbeme directamente — es la forma más rápida y directa de orientarte
-                sobre el paquete que mejor se adapta a ti.
-              </p>
-              <div className="flex flex-col gap-4">
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-ink font-body text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200 w-fit"
-                >
-                  <IconWhatsApp size={18} />
-                  Escribir por WhatsApp
-                </a>
-                <div className="flex flex-col gap-2 mt-2">
-                  <p className="font-body font-light text-sm text-white/40">
-                    <span className="text-white/20 mr-2">✦</span>carolina@pielpantera.com
-                  </p>
-                  <p className="font-body font-light text-sm text-white/40">
-                    <span className="text-white/20 mr-2">✦</span>Modalidad: 100% Online · Costa Rica
-                  </p>
-                  <p className="font-body font-light text-sm text-white/40">
-                    <span className="text-white/20 mr-2">✦</span>@carolinasalazar
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <footer className="bg-ink">
         {/* Footer body */}
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
@@ -810,10 +786,10 @@ export default function Home() {
               {
                 label: "Servicios",
                 links: [
-                  { label: "Asesoría de Imagen", href: "#servicios" },
-                  { label: "¿Para quién es?", href: "#servicios" },
-                  { label: "Proceso", href: "#proceso" },
-                  { label: "Modalidad Online", href: "#servicios" },
+                  { label: "Todos los servicios", href: "#servicios" },
+                  { label: "¿Para quién es?", href: "#proposito" },
+                  { label: "Sobre mí", href: "#sobre-mi" },
+                  { label: "Modalidad Online", href: "#online" },
                 ],
               },
               {
@@ -829,6 +805,7 @@ export default function Home() {
                 label: "Contacto",
                 links: [
                   { label: "Agendar sesión", href: AGENDA_URL },
+                  { label: "Proceso", href: "#proceso" },
                   { label: "Testimonios", href: "#testimonios" },
                   { label: "Preguntas frecuentes", href: "#faq" },
                   { label: "WhatsApp directo", href: WHATSAPP_URL, external: true },
@@ -871,7 +848,7 @@ export default function Home() {
               </a>
             </div>
             <p className="font-body font-light text-xs text-white/15">
-              Carolina Salazar · Consultora de Imagen Profesional
+              Carolina Salazar · Consultora de Imagen Estratégica
             </p>
           </div>
         </div>
