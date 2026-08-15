@@ -176,9 +176,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] items-stretch min-h-screen">
           {/* Left — texto */}
           <div className="flex flex-col justify-center px-6 lg:px-12 pt-32 pb-16 lg:py-32 order-2 lg:order-1 z-10 relative">
-            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-mid mb-7">
-              Carolina Salazar · Piel Pantera
-            </p>
+
             <h1 className="font-heading text-[clamp(42px,5.2vw,68px)] font-normal leading-[1.04] tracking-[-0.01em] text-ink mb-7">
               Consultora de Imagen{" "}
               <em className="italic text-mid">Estratégica</em>
@@ -186,9 +184,9 @@ export default function Home() {
             <div className="w-8 h-px bg-ink mb-6" />
             {/* Perfil profesional condensado — versión corta de "Sobre mí" */}
             <p className="font-body font-light text-[15px] leading-[1.85] max-w-[460px] mb-8">
-              Asesora de Imagen Internacional certificada por Garbo Imagen. Acompaño a
-              profesionales, líderes y emprendedores a alinear su presencia visual con su
-              identidad y sus metas — con un método integral, 100% online.
+              Consultora de imagen certificada. Trabajo con profesionales, líderes y emprendedores 
+              de habla hispana para alinear su presencia visual con quiénes son y a dónde van. 
+              Mi enfoque no es moda — es estrategia de identidad.
             </p>
 
             {/* Pills — 3 servicios destacados */}
@@ -196,7 +194,6 @@ export default function Home() {
               {[
                 "Consultoría de Imagen Estratégica",
                 "Análisis de Colorimetría",
-                "Personal Shopper",
               ].map((pill) => (
                 <li
                   key={pill}
