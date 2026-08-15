@@ -5,6 +5,11 @@ import FAQAccordion from "./components/FAQAccordion";
 import Carrusel from "./components/carrusel";
 import Image from "next/image";
 import {
+  paqueteEmpresarial,
+  paqueteEsencial,
+  paqueteProfesional,
+} from "@/data/packages";
+import {
   Briefcase,
   Building2,
   Camera,
@@ -88,7 +93,7 @@ const services = [
   },
   {
     title: "Personal Shopper",
-    desc: "Aplicamos lo aprendido: seleccionamos juntas prendas concretas para tu cuerpo, tu colorimetría y tus objetivos. Online o híbrido.",
+    desc: "Aplicamos lo aprendido: seleccionamos juntos/as prendas concretas para tu cuerpo, tu colorimetría y tus objetivos. Online o híbrido.",
     icon: <ShoppingBag size={26} strokeWidth={1.2} />,
   },
 ];
@@ -176,19 +181,23 @@ export default function Home() {
               object-position corrido a la derecha porque la modelo está en ese
               lado de la toma; centrada dejaría solo el fondo beige a la vista. */}
           <div className="relative order-1 lg:order-2 w-full aspect-[3/4] sm:aspect-[16/10] lg:aspect-auto lg:absolute lg:inset-0">
+            {/* fetchPriority en vez de preload: son dos variantes art-directed
+                de la MISMA imagen y `preload` haría que el navegador descargara
+                ambas, empeorando el LCP en móvil. El lazy por defecto ya carga
+                solo la visible. */}
             <Image
               src="/hero/bg.webp"
-              alt="Carolina Salazar, consultora de imagen estratégica"
+              alt="Carolina Salazar, consultora de imagen personal y profesional online en Costa Rica"
               fill
-              preload
+              fetchPriority="high"
               sizes="100vw"
               className="hidden md:block object-cover"
             />
             <Image
               src="/hero/bg-mobile.png"
-              alt="Carolina Salazar, consultora de imagen estratégica"
+              alt="Carolina Salazar, consultora de imagen personal y profesional online en Costa Rica"
               fill
-              preload
+              fetchPriority="high"
               sizes="100vw"
               className="md:hidden object-cover"
             />
@@ -197,6 +206,11 @@ export default function Home() {
           {/* Left — texto */}
           <div className="flex flex-col justify-center px-6 md:px-8 lg:px-12 pt-10 pb-16 lg:py-32 order-2 lg:order-1 z-10 relative">
 
+            {/* Eyebrow: sube el término de servicio + la locación por encima del
+                pliegue, que es donde el H1 de marca no los lleva. */}
+            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-5">
+              Asesoría de imagen online · Costa Rica y Latinoamérica
+            </p>
             <h1 className="font-heading text-[clamp(34px,7vw,68px)] font-normal leading-[1.04] tracking-[-0.01em] text-ink mb-7">
               Consultora de Imagen{" "}
               <em className="italic text-mid">Estratégica</em>
@@ -204,9 +218,11 @@ export default function Home() {
             <div className="w-8 h-px bg-ink mb-6" />
             {/* Perfil profesional condensado — versión corta de "Sobre mí" */}
             <p className="font-body font-light text-[15px] leading-[1.85] max-w-[460px] mb-8">
-              Consultora de imagen certificada. Trabajo con profesionales, líderes y emprendedores 
-              de habla hispana para alinear su presencia visual con quiénes son y a dónde van. 
-              Mi enfoque no es moda — es estrategia de identidad.
+              Consultora de <strong className="font-medium text-ink">imagen personal y profesional</strong>{" "}
+              certificada. Trabajo 100% online con profesionales, ejecutivos y emprendedores de{" "}
+              <strong className="font-medium text-ink">Costa Rica y toda Latinoamérica</strong> para alinear
+              su presencia visual con quiénes son y a dónde van. Mi enfoque no es moda — es estrategia
+              de identidad.
             </p>
 
             {/* Pills — 3 servicios destacados */}
@@ -214,6 +230,7 @@ export default function Home() {
               {[
                 "Consultoría de Imagen Estratégica",
                 "Análisis de Colorimetría",
+                "Personal Shopper Online",
               ].map((pill) => (
                 <li
                   key={pill}
@@ -336,7 +353,7 @@ export default function Home() {
               {/* TODO: reemplazar por la foto definitiva de Carolina si hay una nueva */}
               <Image
                 src="/hero/quiensoy.png"
-                alt="Carolina Salazar, asesora de imagen internacional"
+                alt="Carolina Salazar, asesora de imagen internacional certificada, consultora de imagen personal y profesional en Costa Rica"
                 width={1080}
                 height={1350}
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -401,15 +418,15 @@ export default function Home() {
             <AnimatedSection delay={0}>
               <div className="bg-white p-7 sm:p-8 lg:p-10 relative hover:bg-[#fafafa] transition-colors duration-200 h-full">
                 <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-mid border border-edge px-3 py-1 mb-6">
-                  Esencial
+                  {paqueteEsencial.badge}
                 </span>
                 <h3 className="font-heading text-[28px] font-normal text-ink leading-tight mb-2">
-                  Imagen Esencial
+                  {paqueteEsencial.name}
                 </h3>
-                <p className="font-heading text-[36px] font-normal text-ink mb-1">₡85.000</p>
-                <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">Tu punto de partida.</p>
+                <p className="font-heading text-[36px] font-normal text-ink mb-1">{paqueteEsencial.priceLabel}</p>
+                <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">{paqueteEsencial.tagline}</p>
                 <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid mb-6">
-                  Para quienes quieren comenzar su proceso de transformación con bases sólidas.
+                  {paqueteEsencial.summary}
                 </p>
                 <ul className="space-y-3 mb-8">
                   {[
@@ -424,7 +441,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mb-6">Modalidad: Online</p>
+                <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mb-6">Modalidad: {paqueteEsencial.modalidad}</p>
                 <a
                   href={AGENDA_URL}
                   className="block w-full text-center py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
@@ -439,7 +456,7 @@ export default function Home() {
               <div className="bg-ink p-7 sm:p-8 lg:p-10 relative lg:-mt-6 shadow-xl h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-white border border-white/30 px-3 py-1">
-                    Profesional
+                    {paqueteProfesional.badge}
                   </span>
                   <span className="flex items-center gap-1.5 font-body text-[10px] text-white/50 tracking-wide">
                     <span className="relative flex h-2 w-2">
@@ -450,12 +467,12 @@ export default function Home() {
                   </span>
                 </div>
                 <h3 className="font-heading text-[28px] font-normal text-white leading-tight mb-2">
-                  Imagen Profesional
+                  {paqueteProfesional.name}
                 </h3>
-                <p className="font-heading text-[36px] font-normal text-white mb-1">₡165.000</p>
-                <p className="font-body font-light text-xs text-white/60 tracking-wide mb-6">La inversión que tu presencia merece.</p>
+                <p className="font-heading text-[36px] font-normal text-white mb-1">{paqueteProfesional.priceLabel}</p>
+                <p className="font-body font-light text-xs text-white/60 tracking-wide mb-6">{paqueteProfesional.tagline}</p>
                 <p className="font-body font-light text-sm leading-[1.8] text-white/70 mb-6">
-                  Para profesionales y emprendedores que desean proyectar seguridad, coherencia y credibilidad.
+                  {paqueteProfesional.summary}
                 </p>
                 <ul className="space-y-3 mb-8">
                   {[
@@ -472,7 +489,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mb-6">Modalidad: Online</p>
+                <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mb-6">Modalidad: {paqueteProfesional.modalidad}</p>
                 <a
                   href={AGENDA_URL}
                   className="block w-full text-center py-4 bg-white text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-white/90 transition-colors duration-200"
@@ -486,15 +503,15 @@ export default function Home() {
             <AnimatedSection delay={160}>
               <div className="bg-white p-7 sm:p-8 lg:p-10 relative hover:bg-[#fafafa] transition-colors duration-200 h-full">
                 <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-mid border border-edge px-3 py-1 mb-6">
-                  Premium
+                  {paqueteEmpresarial.badge}
                 </span>
                 <h3 className="font-heading text-[28px] font-normal text-ink leading-tight mb-2">
-                  Imagen Empresarial
+                  {paqueteEmpresarial.name}
                 </h3>
-                <p className="font-heading text-[36px] font-normal text-ink mb-1">₡290.000</p>
-                <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">Proceso completo, resultados que se ven.</p>
+                <p className="font-heading text-[36px] font-normal text-ink mb-1">{paqueteEmpresarial.priceLabel}</p>
+                <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">{paqueteEmpresarial.tagline}</p>
                 <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid mb-6">
-                  Para líderes, ejecutivos y marcas personales que requieren imagen alineada a su rol y objetivos.
+                  {paqueteEmpresarial.summary}
                 </p>
                 <ul className="space-y-3 mb-8">
                   {[
@@ -509,7 +526,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mb-6">Modalidad: Online / Híbrido</p>
+                <p className="font-body font-light text-xs text-subtle tracking-wide uppercase mb-6">Modalidad: {paqueteEmpresarial.modalidad}</p>
                 <a
                   href={AGENDA_URL}
                   className="block w-full text-center py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
@@ -592,9 +609,17 @@ export default function Home() {
               Dónde estés
             </p>
             <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
-              Asesoría 100% online,<br />sin límites de ubicación.
+              Asesoría de imagen 100% online,<br />desde Costa Rica para Latinoamérica.
             </h2>
             <div className="w-7 h-px bg-ink mx-auto mt-5" />
+            {/* Los nombres de país en texto visible son la señal geográfica real:
+                sin dirección física, el schema por sí solo no la sostiene. */}
+            <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mt-6">
+              Trabajo con clientes en <strong className="font-medium text-ink">Costa Rica</strong> —
+              San José, Heredia, Cartago, Alajuela y todo el país — y con profesionales de habla hispana
+              en <strong className="font-medium text-ink">Panamá, Guatemala, México, Colombia, Chile,
+              Estados Unidos y España</strong>. Las sesiones se coordinan según tu zona horaria.
+            </p>
           </AnimatedSection>
 
           {/* 3 pilares — íconos rediseñados */}
@@ -611,7 +636,7 @@ export default function Home() {
               },
               {
                 title: "Acompañamiento Real",
-                desc: "No recibes un PDF y te quedas sola. Hay sesiones en vivo, retroalimentación directa y seguimiento en cada etapa del proceso.",
+                desc: "No recibes un PDF y te quedas por tu cuenta. Hay sesiones en vivo, retroalimentación directa y seguimiento en cada etapa del proceso.",
                 icon: <Handshake size={30} strokeWidth={1} />,
               },
               {
@@ -655,7 +680,7 @@ export default function Home() {
               <div>
                 <Image
                   src="/hero/online.webp"
-                  alt="Sesión de asesoría de imagen por videollamada"
+                  alt="Sesión de asesoría de imagen online por videollamada con clientes de Costa Rica y Latinoamérica"
                   width={1600}
                   height={1280}
                   sizes="(max-width: 1023px) 100vw, 50vw"
@@ -777,12 +802,13 @@ export default function Home() {
             <div className="sm:col-span-2 lg:col-span-1">
               <p className="font-heading text-[22px] font-normal text-white mb-1">Carolina Salazar</p>
               <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-white/60 mb-6">
-                Consultora de imagen personal, profesional y empresarial online.
-                Acompañando a líderes, profesionales y emprendedores a proyectar su mejor versión.
+                Consultora de imagen personal, profesional y empresarial online en Costa Rica.
+                Análisis de colorimetría, morfología y estilo para ejecutivos, profesionales y
+                emprendedores de toda Latinoamérica.
               </p>
               {/* -ml-3 compensa el padding táctil para que los iconos sigan alineados */}
               <div className="flex items-center gap-1 -ml-3">
-                <a href="https://www.instagram.com/pielpanteracollections" aria-label="Instagram de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
+                <a href="https://www.instagram.com/pielpanteracollections" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
                   <IconInstagram />
                 </a>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
