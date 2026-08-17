@@ -10,6 +10,7 @@ import {
   Palette,
   Sparkles,
   X,
+  ShoppingBag,
   type LucideIcon,
 } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
@@ -28,6 +29,7 @@ const ICONS: Record<ServicioIcon, LucideIcon> = {
   sparkles: Sparkles,
   briefcase: Briefcase,
   building: Building2,
+  shoppingbag: ShoppingBag,
 };
 
 function ServicioIconGlyph({ name, size }: { name: ServicioIcon; size: number }) {

@@ -9,7 +9,8 @@ export type ServicioIcon =
   | "layers"
   | "sparkles"
   | "briefcase"
-  | "building";
+  | "building"
+  | "shoppingbag";
 
 export type Servicio = {
   slug: string;
@@ -29,6 +30,7 @@ export const servicios: Servicio[] = [
     title: "Análisis de Colorimetría",
     desc: "Identificamos tu subtono, temperatura y contraste natural para definir la paleta exacta que ilumina tu rostro y potencia tu presencia.",
     icon: "palette",
+    priceLabel: "$110 USD",
     bullets: [
       "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocerte antes de la sesión",
       "Evaluación con herramientas digitales de diagnóstico de color, a partir de la fotografía en luz natural que tú nos compartes",
@@ -43,6 +45,7 @@ export const servicios: Servicio[] = [
     title: "Colorimetría Integral",
     subtitle: "Personal + Profesional + Marca/Negocio",
     desc: "La misma base técnica de tu colorimetría, llevada a los tres espacios donde tu imagen habla por ti: tu día a día, tu trayectoria profesional y tu marca o negocio.",
+    priceLabel: "$145 USD",
     icon: "layers",
     bullets: [
       "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocer tus objetivos en cada una de las tres áreas",
@@ -101,6 +104,20 @@ export const servicios: Servicio[] = [
       "Seguimiento extendido para sostener el cambio en el tiempo",
       "Formato: Online / Híbrido — la modalidad híbrida incluye acompañamiento de compras presencial en tu ciudad, sujeto a disponibilidad geográfica (consultar)",
       "Revista Personalizada impresa incluida sin costo adicional (único paquete que la incluye dentro del servicio)",
+    ],
+  },
+  {
+    slug: "personal-shopper",
+    title: "Personal Shopper",
+    desc: "Aplicamos lo aprendido: seleccionamos juntos/as prendas concretas para tu cuerpo, tu colorimetría y tus objetivos.",
+    icon: "shoppingbag",
+    bullets: [
+      "Entrevista inicial por videollamada — al confirmar tu reserva recibís un enlace con una breve encuesta para conocerte antes de la sesión",
+      "Modalidad online: selección curada de prendas y tiendas según tu perfil, enviada en guía digital",
+      "Modalidad híbrida: acompañamiento en tiempo real durante tu compra (sujeto, cantidad de horas, ciudad y disponibilidad)",
+      "Enfocado en piezas clave que multiplican combinaciones, no en comprar por comprar",
+      "Incluido en el Paquete Empresarial, o disponible como complemento del Paquete Profesional",
+      "Revista Personalizada impresa disponible como adicional al finalizar el proceso ($20 USD)",
     ],
   },
 ];

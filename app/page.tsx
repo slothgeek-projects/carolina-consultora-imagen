@@ -91,8 +91,8 @@ const testimonialSlides = [
         <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
       </div>
       <div>
-        <p className="font-body font-medium text-sm text-white">Ana Laura M.</p>
-        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Directora de Marketing</p>
+        <p className="font-body font-medium text-sm text-white">Karina Víquez.</p>
+        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Ejecutiva/Emprendedora</p>
       </div>
     </div>
   </div>,
@@ -107,28 +107,11 @@ const testimonialSlides = [
         <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
       </div>
       <div>
-        <p className="font-body font-medium text-sm text-white">Valeria R.</p>
+        <p className="font-body font-medium text-sm text-white">Adina Mora.</p>
         <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Emprendedora</p>
       </div>
     </div>
-  </div>,
-
-  <div key="t3" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
-    <div className="absolute top-4 left-5 sm:top-6 sm:left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8">
-      Como ejecutivo nunca le había dado importancia real a la imagen. Hoy entiendo que era{" "}
-      <strong className="font-medium text-white">mi activo más desaprovechado</strong>. Después de la asesoría, varios clientes comentaron que notaron algo diferente — más presencia, más autoridad.
-    </p>
-    <div className="flex items-center gap-4">
-      <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex-shrink-0 overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
-      </div>
-      <div>
-        <p className="font-body font-medium text-sm text-white">Ricardo F.</p>
-        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Gerente General</p>
-      </div>
-    </div>
-  </div>,
+  </div>
 ];
 
 export default function Home() {
@@ -148,7 +131,7 @@ export default function Home() {
                 ambas, empeorando el LCP en móvil. El lazy por defecto ya carga
                 solo la visible. */}
             <Image
-              src="/hero/bg.webp"
+              src="/hero/bg.png"
               alt="Carolina Salazar, consultora de imagen personal y profesional online en Costa Rica"
               fill
               fetchPriority="high"
