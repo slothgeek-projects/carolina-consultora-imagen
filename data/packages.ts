@@ -14,15 +14,15 @@ export type Paquete = {
   modalidad: string;
 };
 
-export const CURRENCY = "CRC";
+export const CURRENCY = "USD";
 
 export const paquetes: Paquete[] = [
   {
     slug: "imagen-esencial",
     badge: "Esencial",
     name: "Imagen Esencial",
-    price: 85000,
-    priceLabel: "₡85.000",
+    price: 210,
+    priceLabel: "$210 USD",
     tagline: "Tu punto de partida.",
     summary:
       "Asesoría de imagen personal online para quienes quieren comenzar su proceso de transformación con bases sólidas: morfología corporal y colorimetría personal.",
@@ -32,8 +32,8 @@ export const paquetes: Paquete[] = [
     slug: "imagen-profesional",
     badge: "Profesional",
     name: "Imagen Profesional",
-    price: 165000,
-    priceLabel: "₡165.000",
+    price: 365,
+    priceLabel: "$365 USD",
     tagline: "La inversión que tu presencia merece.",
     summary:
       "Consultoría de imagen profesional online para profesionales y emprendedores que desean proyectar seguridad, coherencia y credibilidad. Incluye análisis facial y definición de estilo.",
@@ -43,8 +43,8 @@ export const paquetes: Paquete[] = [
     slug: "imagen-empresarial",
     badge: "Premium",
     name: "Imagen Empresarial",
-    price: 290000,
-    priceLabel: "₡290.000",
+    price: 645,
+    priceLabel: "$645 USD",
     tagline: "Proceso completo, resultados que se ven.",
     summary:
       "Consultoría de imagen empresarial para líderes, ejecutivos y marcas personales que requieren una imagen alineada a su rol y objetivos. Incluye personal shopper y seguimiento extendido.",

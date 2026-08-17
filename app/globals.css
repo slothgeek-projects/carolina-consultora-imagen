@@ -31,6 +31,21 @@ body {
   transform: translateY(0);
 }
 
+/* Modal de servicios. El cierre reusa la misma animación en reverse, así no
+   hay dos juegos de keyframes que mantener sincronizados. */
+@keyframes modal-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modal-panel-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+.modal-overlay { animation: modal-overlay-in 0.22s ease-out both; }
+.modal-panel   { animation: modal-panel-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.modal-overlay[data-cerrando="true"] { animation: modal-overlay-in 0.2s ease-in reverse both; }
+.modal-panel[data-cerrando="true"]   { animation: modal-panel-in 0.2s ease-in reverse both; }
+
 @keyframes pulse-whatsapp {
   0%, 100% { box-shadow: 0 0 0 0 rgba(13,13,13,0.25); }
   60%       { box-shadow: 0 0 0 14px rgba(13,13,13,0); }

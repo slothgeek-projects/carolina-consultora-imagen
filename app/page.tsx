@@ -2,6 +2,7 @@ import Nav from "./components/Nav";
 import AnimatedSection from "./components/AnimatedSection";
 
 import FAQAccordion from "./components/FAQAccordion";
+import ServiciosGrid from "./components/ServiciosGrid";
 import Carrusel from "./components/carrusel";
 import Image from "next/image";
 import {
@@ -10,8 +11,6 @@ import {
   paqueteProfesional,
 } from "@/data/packages";
 import {
-  Briefcase,
-  Building2,
   Camera,
   Check,
   FileText,
@@ -19,16 +18,12 @@ import {
   Globe,
   Handshake,
   MessageSquare,
-  Palette,
-  ScanFace,
-  ShoppingBag,
-  Sparkles,
   Target,
   Video,
 } from "lucide-react";
 
-const WHATSAPP_URL =
-  "https://wa.me/50670170734?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20la%20asesor%C3%ADa%20de%20imagen.";
+import { WHATSAPP_URL } from "@/lib/seo";
+
 const AGENDA_URL = "/agendar";
 
 /* lucide-react ya no incluye íconos de marca, así que WhatsApp e Instagram
@@ -62,39 +57,6 @@ const profiles = [
   {
     title: "En Transición Personal o Profesional",
     pain: "Estás en un nuevo capítulo. Tu imagen debe acompañar quién estás siendo hoy.",
-  },
-];
-
-const services = [
-  {
-    title: "Análisis de Colorimetría",
-    desc: "Identificamos tu subtono, temperatura y contraste natural para definir la paleta exacta que ilumina tu rostro y potencia tu presencia.",
-    icon: <Palette size={26} strokeWidth={1.2} />,
-  },
-  {
-    title: "Consultoría de Imagen Personal",
-    desc: "Un estilo propio, coherente y sostenible. Definimos qué te funciona según tu cuerpo, tu vida real y quién quieres ser hoy.",
-    icon: <Sparkles size={26} strokeWidth={1.2} />,
-  },
-  {
-    title: "Consultoría de Imagen Profesional",
-    desc: "Alineamos tu presencia visual con tu rol, tu sector y tus objetivos de carrera para que comuniques autoridad antes de hablar.",
-    icon: <Briefcase size={26} strokeWidth={1.2} />,
-  },
-  {
-    title: "Consultoría de Imagen Empresarial",
-    desc: "Estrategia de imagen para líderes y marcas personales que representan a su organización frente a clientes, inversores y mercado.",
-    icon: <Building2 size={26} strokeWidth={1.2} />,
-  },
-  {
-    title: "Análisis Corporal y Facial",
-    desc: "Morfología, proporciones, postura y facciones: la base técnica que hace que cada recomendación sea precisa y no genérica.",
-    icon: <ScanFace size={26} strokeWidth={1.2} />,
-  },
-  {
-    title: "Personal Shopper",
-    desc: "Aplicamos lo aprendido: seleccionamos juntos/as prendas concretas para tu cuerpo, tu colorimetría y tus objetivos. Online o híbrido.",
-    icon: <ShoppingBag size={26} strokeWidth={1.2} />,
   },
 ];
 
@@ -209,11 +171,11 @@ export default function Home() {
             {/* Eyebrow: sube el término de servicio + la locación por encima del
                 pliegue, que es donde el H1 de marca no los lleva. */}
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-5">
-              Asesoría de imagen online · Costa Rica y Latinoamérica
+              Asesoría de Imagen Online | Costa Rica y Latinoamérica – Carolina Salazar
             </p>
             <h1 className="font-heading text-[clamp(34px,7vw,68px)] font-normal leading-[1.04] tracking-[-0.01em] text-ink mb-7">
-              Consultora de Imagen{" "}
-              <em className="italic text-mid">Estratégica</em>
+              Asesoría de Imagen{" "}
+              <em className="italic text-mid">Estratégica</em> online
             </h1>
             <div className="w-8 h-px bg-ink mb-6" />
             {/* Perfil profesional condensado — versión corta de "Sobre mí" */}
@@ -266,7 +228,7 @@ export default function Home() {
               <em className="italic text-mid">es parte de su estrategia</em>
             </h2>
             <div className="w-7 h-px bg-ink mx-auto" />
-            <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid">
+            <p className="font-body font-light text-base md:text-[15px] leading-[1.9]">
               <strong className="font-medium text-ink">Esta asesoría no es para todos</strong> — y eso es precisamente lo
               que la hace efectiva. Está diseñada para personas que tienen{" "}
               <strong className="font-medium text-ink">metas claras, se toman en serio su presencia</strong> y entienden
@@ -308,7 +270,7 @@ export default function Home() {
               ¿Qué es la asesoría de imagen personal?
             </h2>
             <div className="w-7 h-px bg-ink mx-auto" />
-            <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid">
+            <p className="font-body font-light text-base md:text-[15px] leading-[1.9]">
               Va mucho más allá de la ropa o la moda. Es un análisis estratégico y
               profundamente personalizado de tu{" "}
               <strong className="font-medium text-ink">colorimetría, morfología, estilo de vida y comunicación visual</strong>{" "}
@@ -316,23 +278,9 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          {/* Cuadrícula de servicios */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-            style={{ gap: "1px", background: "#E0E0E0" }}
-          >
-            {services.map((s, i) => (
-              <AnimatedSection key={s.title} delay={i * 60}>
-                <div className="bg-white p-7 sm:p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200 h-full flex flex-col">
-                  <span className="text-ink mb-5 block">{s.icon}</span>
-                  <h3 className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-3">
-                    {s.title}
-                  </h3>
-                  <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid">{s.desc}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+          {/* Cuadrícula de servicios — cada tarjeta abre un modal con el
+              detalle completo (ver app/components/ServiciosGrid.tsx). */}
+          <ServiciosGrid />
 
           <AnimatedSection delay={120} className="text-center mt-12">
             <a
@@ -370,19 +318,20 @@ export default function Home() {
                 Carolina Salazar
               </h2>
               <div className="w-7 h-px bg-ink mb-6" />
-              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mb-5">
+              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mb-5">
                 Soy <strong className="font-medium text-ink">consultora de imagen certificada</strong>, 
                 especializada en imagen personal, profesional y empresarial. Trabajo de forma 100% online 
                 con profesionales, líderes y emprendedores de todo el mundo de habla hispana que saben que 
                 su presencia visual es parte de su estrategia — no un accesorio.
               </p>
-              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mb-8">
+              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mb-8">
                 Mi enfoque no es sobre moda ni tendencias. Es sobre identidad: entender quién eres, dónde 
                 vas y asegurarte de que tu imagen trabaje a tu favor antes de que abras la boca.
               </p>
-              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mb-8">
+              <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mb-8">
                 Cada proceso es profundamente personalizado — porque no existe una fórmula universal para 
-                proyectar autoridad, autenticidad y presencia. Lo que sí existe es un método. Y ese método es Piel Pantera.
+                proyectar autoridad, autenticidad y presencia. Lo que sí existe es un método claro: 
+                entender primero, transformar después.
               </p>
               <a
                 href={WHATSAPP_URL}
@@ -425,7 +374,7 @@ export default function Home() {
                 </h3>
                 <p className="font-heading text-[36px] font-normal text-ink mb-1">{paqueteEsencial.priceLabel}</p>
                 <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">{paqueteEsencial.tagline}</p>
-                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid mb-6">
+                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] mb-6">
                   {paqueteEsencial.summary}
                 </p>
                 <ul className="space-y-3 mb-8">
@@ -437,7 +386,7 @@ export default function Home() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="mt-0.5 flex-shrink-0"><Check size={16} strokeWidth={1.5} className="text-ink" /></span>
-                      <span className="font-body font-light text-sm leading-[1.7] text-mid">{item}</span>
+                      <span className="font-body font-light text-sm leading-[1.7]">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -510,7 +459,7 @@ export default function Home() {
                 </h3>
                 <p className="font-heading text-[36px] font-normal text-ink mb-1">{paqueteEmpresarial.priceLabel}</p>
                 <p className="font-body font-light text-xs text-subtle tracking-wide mb-6">{paqueteEmpresarial.tagline}</p>
-                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid mb-6">
+                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] mb-6">
                   {paqueteEmpresarial.summary}
                 </p>
                 <ul className="space-y-3 mb-8">
@@ -522,7 +471,7 @@ export default function Home() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="mt-0.5 flex-shrink-0"><Check size={16} strokeWidth={1.5} className="text-ink" /></span>
-                      <span className="font-body font-light text-sm leading-[1.7] text-mid">{item}</span>
+                      <span className="font-body font-light text-sm leading-[1.7]">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -585,7 +534,7 @@ export default function Home() {
                   <h3 className="font-heading text-[22px] font-normal text-ink mb-3 leading-snug relative z-10">
                     {s.title}
                   </h3>
-                  <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid relative z-10">
+                  <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] relative z-10">
                     {s.description}
                   </p>
                 </div>
@@ -614,11 +563,11 @@ export default function Home() {
             <div className="w-7 h-px bg-ink mx-auto mt-5" />
             {/* Los nombres de país en texto visible son la señal geográfica real:
                 sin dirección física, el schema por sí solo no la sostiene. */}
-            <p className="font-body font-light text-base md:text-[15px] leading-[1.9] text-mid mt-6">
-              Trabajo con clientes en <strong className="font-medium text-ink">Costa Rica</strong> —
-              San José, Heredia, Cartago, Alajuela y todo el país — y con profesionales de habla hispana
-              en <strong className="font-medium text-ink">Panamá, Guatemala, México, Colombia, Chile,
-              Estados Unidos y España</strong>. Las sesiones se coordinan según tu zona horaria.
+            <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mt-6">
+              Trabajo <strong className="font-medium text-ink">100% online</strong> con clientes en 
+              toda Costa Rica y con profesionales de habla hispana en cualquier país de Latinoamérica 
+              y Centroamérica. <strong className="font-medium text-ink">No importa la ciudad ni el país donde estés</strong>: el proceso es exactamente 
+              el mismo, personalizado y cercano, y las sesiones se coordinan según tu zona horaria.
             </p>
           </AnimatedSection>
 
@@ -646,11 +595,11 @@ export default function Home() {
               },
             ].map((pillar) => (
               <div key={pillar.title} className="bg-white p-7 sm:p-8 md:p-10 hover:bg-[#fafafa] transition-colors duration-200">
-                <span className="text-ink mb-6 block">{pillar.icon}</span>
+                <span className="text-mid mb-6 block">{pillar.icon}</span>
                 <h3 className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-3">
                   {pillar.title}
                 </h3>
-                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid">{pillar.desc}</p>
+                <p className="font-body font-light text-[15px] md:text-sm leading-[1.8]">{pillar.desc}</p>
               </div>
             ))}
           </div>
@@ -717,7 +666,7 @@ export default function Home() {
                     <p className="font-body font-medium text-[11px] tracking-[0.12em] uppercase text-ink mb-2">
                       {b.title}
                     </p>
-                    <p className="font-body font-light text-[15px] md:text-sm leading-[1.8] text-mid">{b.desc}</p>
+                    <p className="font-body font-light text-[15px] md:text-sm leading-[1.8]">{b.desc}</p>
                   </div>
                 </AnimatedSection>
               ))}

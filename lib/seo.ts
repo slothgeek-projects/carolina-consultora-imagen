@@ -12,8 +12,15 @@ export const SITE_URL = (
 export const SITE_NAME = "Piel Pantera Collections";
 export const PERSON_NAME = "Carolina Salazar";
 export const INSTAGRAM_URL = "https://www.instagram.com/pielpanteracollections";
-/* TODO cliente: confirmar el número antes de publicar (ver también WHATSAPP_URL en app/page.tsx) */
+/* TODO cliente: confirmar el número antes de publicar. */
 export const PHONE_E164 = "+50670170734";
+
+/* Enlace de WhatsApp con mensaje precargado. Fuente única: lo consumen la home
+   (app/page.tsx) y las páginas legales (app/components/LegalPage.tsx). */
+export const WHATSAPP_URL = `https://wa.me/${PHONE_E164.replace(
+  /\D/g,
+  ""
+)}?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20la%20asesor%C3%ADa%20de%20imagen.`;
 
 export const SITE_DESCRIPTION =
   "Consultora de imagen personal y profesional online con Carolina Salazar — análisis de colorimetría, morfología y estilo para ejecutivos y emprendedores en Costa Rica y Latinoamérica.";

@@ -11,7 +11,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: "¿Necesito experiencia previa en moda o estilo?",
-    a: "No es necesario. La asesoría parte desde donde estás: tu estilo de vida actual, tus objetivos y lo que ya tienes en tu guardarropa. Trabajamos juntas para construir desde ahí, sin imponer tendencias ni estilos ajenos a ti.",
+    a: "No es necesario. La asesoría parte desde donde estás: tu estilo de vida actual, tus objetivos y lo que ya tienes en tu guardarropa. Construimos esto juntos/as, sin imponer tendencias ni estilos ajenos a ti.",
   },
   {
     q: "¿Cuáles son los resultados concretos que puedo esperar?",
@@ -35,6 +35,6 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: "¿Atiendes clientes fuera de Costa Rica?",
-    a: "Sí. Al ser una consultoría de imagen 100% online, trabajo con profesionales, ejecutivos y emprendedores de habla hispana en toda Latinoamérica: Costa Rica, Panamá, México, Colombia, Guatemala, Chile, España y más. Las sesiones se coordinan según tu zona horaria.",
+    a: "Sí. Al ser una consultoría de imagen 100% online, trabajo con profesionales, ejecutivos y emprendedores de habla hispana en cualquier país de Latinoamérica y Centroamérica, además de Costa Rica. No importa dónde estés: accedés al mismo proceso personalizado, y las sesiones se coordinan según tu zona horaria.",
   },
 ];

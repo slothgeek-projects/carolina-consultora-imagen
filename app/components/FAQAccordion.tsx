@@ -44,7 +44,7 @@ export default function FAQAccordion() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="font-body font-light text-[15px] sm:text-base leading-[1.8] text-mid pb-6">
+                <p className="font-body font-light text-[15px] sm:text-base leading-[1.8] pb-6">
                   {item.a}
                 </p>
               </div>

@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { legalDocs } from "@/data/legal";
 import { SITE_URL } from "@/lib/seo";
 
-/* Landing de una sola página indexable. /agendar queda fuera por llevar
-   noindex, y las legales (/privacidad, /terminos, /cookies) todavía no
-   existen — se agregan aquí cuando se creen. */
+/* La home carga todo el contenido comercial; /agendar queda fuera por llevar
+   noindex. Las legales sí se listan, con prioridad baja: no compiten por
+   tráfico, pero son señal de confianza del negocio. */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
@@ -17,5 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${SITE_URL}/hero/online.webp`,
       ],
     },
+    ...legalDocs.map((doc) => ({
+      url: `${SITE_URL}/${doc.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
   ];
 }

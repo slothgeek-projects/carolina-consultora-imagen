@@ -11,15 +11,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'officia.app',
-      },
-      {
-        protocol: 'https',
-        hostname: '07.officia.app',
-      },
-      {
-        protocol: 'https',
-        hostname: 'my.officia.app',
-      },
+      }
     ],
   },
 };
