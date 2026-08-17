@@ -112,7 +112,7 @@ export const servicios: Servicio[] = [
     desc: "Aplicamos lo aprendido: seleccionamos juntos/as prendas concretas para tu cuerpo, tu colorimetría y tus objetivos.",
     icon: "shoppingbag",
     bullets: [
-      "Entrevista inicial por videollamada — al confirmar tu reserva recibís un enlace con una breve encuesta para conocerte antes de la sesión",
+      "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocerte antes de la sesión",
       "Modalidad online: selección curada de prendas y tiendas según tu perfil, enviada en guía digital",
       "Modalidad híbrida: acompañamiento en tiempo real durante tu compra (sujeto, cantidad de horas, ciudad y disponibilidad)",
       "Enfocado en piezas clave que multiplican combinaciones, no en comprar por comprar",

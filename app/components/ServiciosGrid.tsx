@@ -32,6 +32,12 @@ const ICONS: Record<ServicioIcon, LucideIcon> = {
   shoppingbag: ShoppingBag,
 };
 
+/* Celdas vacías que quedan en la última fila con `columnas` columnas. */
+function huecos(columnas: number) {
+  const sobran = (columnas - (servicios.length % columnas)) % columnas;
+  return Array.from({ length: sobran }, (_, i) => i);
+}
+
 function ServicioIconGlyph({ name, size }: { name: ServicioIcon; size: number }) {
   const Glyph = ICONS[name];
   return <Glyph size={size} strokeWidth={1.2} />;
@@ -121,6 +127,10 @@ function ServicioModal({
         aria-labelledby={`servicio-${servicio.slug}-title`}
         tabIndex={-1}
         data-cerrando={cerrando}
+        /* data-lenis-prevent: con lenis.stop() Lenis hace preventDefault() sobre
+           todo evento de rueda, lo que también mataría el scroll nativo de este
+           panel. El atributo lo excluye de su manejo (lenis.mjs:580). */
+        data-lenis-prevent
         className="modal-panel relative w-full sm:max-w-2xl max-h-[90dvh] sm:max-h-[85dvh] overflow-y-auto overscroll-contain bg-white border border-edge shadow-2xl outline-none"
       >
         <button
@@ -249,9 +259,16 @@ export default function ServiciosGrid() {
             </button>
           </AnimatedSection>
         ))}
-        {/* Con 5 servicios sobra una celda tanto a 2 como a 3 columnas. Sin este
-            relleno se ve el #E0E0E0 del grid como un bloque gris macizo. */}
-        <div className="hidden sm:block bg-white" aria-hidden />
+        {/* Las celdas que sobran en la última fila dejarían ver el #E0E0E0 del
+            grid como bloques grises macizos. Se rellenan en blanco, y como el
+            número de columnas cambia por breakpoint cada relleno solo existe en
+            el suyo. Si los servicios llenan la fila, no se renderiza ninguno. */}
+        {huecos(2).map((k) => (
+          <div key={`hueco-sm-${k}`} className="hidden sm:block lg:hidden bg-white" aria-hidden />
+        ))}
+        {huecos(3).map((k) => (
+          <div key={`hueco-lg-${k}`} className="hidden lg:block bg-white" aria-hidden />
+        ))}
       </div>
 
       {activo &&
