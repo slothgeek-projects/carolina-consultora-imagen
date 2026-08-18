@@ -33,12 +33,12 @@ export default function Step0() {
             {/* CTA primario */}
             <Button
                 fullWidth
-                className='bg-primary text-white font-bold shadow-medium'
+                className='bg-ink text-white shadow-medium rounded-none h-12'
                 size='lg'
                 onPress={handleStart}
             >
                 <CalendarIcon className='w-6 h-6' />
-                Agendar Servicio
+                <span className="animate-pulse">Agendar Servicio</span>
             </Button>
 
             {/* Divisor "o también" */}

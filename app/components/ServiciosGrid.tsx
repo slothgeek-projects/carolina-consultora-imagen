@@ -192,7 +192,7 @@ function ServicioModal({
           </ul>
           <a
             href={AGENDA_URL}
-            className="block w-full text-center py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
+            className="block w-full animate-pulse text-center py-4 border border-ink bg-ink text-white font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
           >
             Agendar mi asesoría
           </a>

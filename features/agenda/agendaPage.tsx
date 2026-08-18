@@ -27,7 +27,7 @@ export default function AgendaPage({account}: {account: Account}) {
     return (
         <AgendaProvider account={account}>
             <div className="relative w-full">
-                <main className='w-full max-w-2xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen'>
+                <main className='w-full max-w-2xl mx-auto p-4 flex flex-col items-center justify-center mt-12'>
                     <AgendaComponent />
                 </main>
             </div>

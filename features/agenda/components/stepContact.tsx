@@ -139,7 +139,7 @@ export default function Step0() {
                 <div className='pt-1'>
                     <TextField aria-label='Nombre completo' name="oa_name" >
                         <Label htmlFor="oa_name" className='text-xs'><span className='text-o-gray-300'>Nombre completo</span></Label>
-                        <InputGroup className='bg-background'>
+                        <InputGroup className='bg-background rounded-none'>
                             <InputGroup.Prefix>
                                 <UserIcon className='w-4 h-4' />
                             </InputGroup.Prefix>
@@ -150,7 +150,7 @@ export default function Step0() {
                 <div>
                     <TextField className="w-full" defaultValue="heroui.com" name="website" aria-label='Teléfono'>
                         <Label htmlFor="oa_phone" className='text-xs'><span className='text-o-gray-300'>Teléfono de contacto</span></Label>
-                        <InputGroup className="bg-background">
+                        <InputGroup className="bg-background rounded-none">
                             <InputGroup.Prefix className='px-0'>
                                 <Select
                                     className="w-[58px]"
@@ -185,7 +185,7 @@ export default function Step0() {
                 <div className='pt-1'>
                     <TextField aria-label='Correo electrónico' name="oa_email" >
                         <Label htmlFor="oa_email" className='text-xs'><span className='font-semibold'>(Opcional)</span> <span className='text-o-gray-300'>Correo electrónico</span></Label>
-                        <InputGroup className='bg-background'>
+                        <InputGroup className='bg-background rounded-none'>
                             <InputGroup.Prefix>
                                 <MailIcon className='w-4 h-4' />
                             </InputGroup.Prefix>
@@ -222,7 +222,7 @@ export default function Step0() {
             }
             <div>
                 <Checkbox id="basic-terms" isSelected={termsAccepted} onChange={setTermsAccepted}>
-                    <Checkbox.Control className='bg-background'>
+                    <Checkbox.Control className='bg-background rounded-none border border-o-gray-200 dark:border-o-gray-800'>
                         <Checkbox.Indicator />
                     </Checkbox.Control>
                     <Checkbox.Content>

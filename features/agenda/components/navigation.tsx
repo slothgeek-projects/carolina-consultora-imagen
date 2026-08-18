@@ -28,7 +28,7 @@ export default function Navigation() {
             <div className="flex justify-center flex-wrap gap-1.5 text-sm">
                 {items.map(item => (
 
-                    <div key={item.label} className="flex items-center font-semibold px-2.5 py-0.5 bg-surface-secondary text-foreground rounded-full text-xs text-center">
+                    <div key={item.label} className="flex items-center px-2.5 py-0.5 bg-surface-secondary text-foreground rounded-none text-base text-center">
                         <span
                             className="truncate max-w-[300px]"
                             title={item.value}

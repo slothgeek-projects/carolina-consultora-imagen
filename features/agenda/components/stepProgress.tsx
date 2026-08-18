@@ -31,10 +31,10 @@ export default function StepProgress() {
                     <div key={stepNumber} className="flex items-center">
                         <div
                             className={clsx(
-                                'w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-200 border-2',
+                                'w-7 h-7 rounded-none flex items-center justify-center text-xs transition-all duration-200 border-2',
                                 {
-                                    'bg-primary border-primary text-white scale-110 shadow-md': isActive,
-                                    'bg-primary border-primary text-foreground opacity-70': isCompleted,
+                                    'bg-primary border-primary text-ink scale-110 shadow-md': isActive,
+                                    'bg-ink border-primary text-foreground opacity-70': isCompleted,
                                     'bg-transparent border-o-gray-200 text-o-gray-300': !isActive && !isCompleted,
                                 }
                             )}

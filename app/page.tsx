@@ -267,7 +267,7 @@ export default function Home() {
           <AnimatedSection delay={120} className="text-center mt-12">
             <a
               href="#paquetes"
-              className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-ink border-b border-ink pb-px hover:text-mid hover:border-mid transition-colors duration-200"
+              className="inline-block animate-pulse font-body text-[10px] tracking-[0.14em] uppercase text-ink border-b border-ink pb-px hover:text-mid hover:border-mid transition-colors duration-200"
             >
               Ver paquetes y precios →
             </a>
@@ -319,7 +319,7 @@ export default function Home() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full sm:w-auto justify-center items-center gap-3 px-9 py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
+                className="inline-flex animate-pulse w-full sm:w-auto justify-center items-center gap-3 px-9 py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"
               >
                 <IconWhatsApp size={16} />
                 Hablemos de tu imagen

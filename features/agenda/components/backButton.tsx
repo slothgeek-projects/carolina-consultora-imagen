@@ -20,7 +20,7 @@ export default function BackButton() {
             variant="outline"
             size="sm"
             onPress={goBack}
-            className="self-start text-foreground"
+            className="self-start text-foreground rounded-none"
             aria-label="Volver al paso anterior"
             isDisabled={step < 1}
         >

@@ -23,7 +23,7 @@ export default function Footer() {
                             <>
                                 <BackButton />
                                 <Button
-                                    className="bg-primary hover:from-teal-600 hover:to-primary"
+                                    className="bg-ink hover:text-mid rounded-none"
                                     isDisabled={!canSendForm || step !== 6}
                                     onPress={() => submitForm?.()}
                                 >

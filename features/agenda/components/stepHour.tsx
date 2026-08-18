@@ -20,7 +20,7 @@ export default function StepHour() {
 
             <div className="space-y-4 max-w-md mx-auto">
                 {hours.map((hour, index) => (
-                    <Button key={index} className="bg-primary w-full uppercase shadow-medium" size="lg" onPress={() => setSelectedTime(hour.start)}>
+                    <Button key={index} className="bg-ink w-full uppercase shadow-medium rounded-none" size="lg" onPress={() => setSelectedTime(hour.start)}>
                         <span>{ new Date(selectedDate + ' ' + hour.start).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: true }) }</span>
                     </Button>
                 ))}
