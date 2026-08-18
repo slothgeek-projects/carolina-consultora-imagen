@@ -20,7 +20,7 @@ export const paquetes: Paquete[] = [
   {
     slug: "imagen-esencial",
     badge: "Esencial",
-    name: "Imagen Esencial",
+    name: "Imagen Personal",
     price: 210,
     priceLabel: "$210 USD",
     tagline: "Tu punto de partida.",

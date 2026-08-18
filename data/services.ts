@@ -22,6 +22,7 @@ export type Servicio = {
   priceLabel?: string;
   icon: ServicioIcon;
   bullets: string[];
+  conditions?: string | undefined;
 };
 
 export const servicios: Servicio[] = [
@@ -35,8 +36,8 @@ export const servicios: Servicio[] = [
       "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocerte antes de la sesión",
       "Evaluación con herramientas digitales de diagnóstico de color, a partir de la fotografía en luz natural que tú nos compartes",
       "Paleta personalizada de colores entregada en guía digital",
-      "Aplicable a ropa, maquillaje y accesorios",
-      "Entrega de guía: 3–5 días hábiles tras la sesión",
+      "Aplicable a ropa, maquillaje, cabello y accesorios.",
+      "Entrega de guía digital: 3–5 días hábiles tras la sesión",
       "Revista Personalizada impresa disponible como adicional al finalizar el proceso ($20 USD)",
     ],
   },
@@ -54,7 +55,7 @@ export const servicios: Servicio[] = [
       "Guía de aplicación profesional: tu paleta traducida a imagen ejecutiva y comunicación visual en tu carrera",
       "Guía de aplicación de marca/negocio: tu paleta traducida a identidad de marca, redes sociales y materiales de marketing",
       "Documento único con las tres guías integradas, entregado en formato digital",
-      "Entrega: 5–7 días hábiles (incluye el trabajo adicional de adaptar la paleta a los tres contextos)",
+      "Entrega de guía digital: 3–5 días hábiles tras la sesión",
       "Revista Personalizada impresa disponible como adicional al finalizar el proceso ($20 USD)",
     ],
   },
@@ -66,11 +67,11 @@ export const servicios: Servicio[] = [
     icon: "sparkles",
     bullets: [
       "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocerte antes de la sesión",
-      "Diagnóstico de morfología corporal y estilo de vida",
+      "Análisis facial y de morfología corporal",
       "Definición de tu paleta de colores (colorimetría incluida)",
       "Guía de siluetas, prendas y combinaciones que te favorecen",
       "Plan de aplicación para tu guardarropa actual",
-      "Formato: 100% online, con guía visual descargable al finalizar",
+      "Formato: 100% online, con guía digital al finalizar",
       "Revista Personalizada impresa disponible como adicional al finalizar el proceso ($20 USD)",
     ],
   },
@@ -82,6 +83,7 @@ export const servicios: Servicio[] = [
     icon: "briefcase",
     bullets: [
       "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocerte antes de la sesión",
+      "Definición de tu paleta de colores (colorimetría incluida)",
       "Análisis facial y de morfología corporal",
       "Definición de estilo ejecutivo/profesional según tu sector",
       "Guía visual con combinaciones listas para reuniones, entrevistas o eventos clave",
@@ -98,9 +100,10 @@ export const servicios: Servicio[] = [
     icon: "building",
     bullets: [
       "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocerte antes de la sesión",
+      "Definición de tu paleta de colores (colorimetría incluida)",
       "Auditoría de tu imagen actual frente a tu rol de liderazgo",
       "Estrategia de imagen alineada a la identidad y valores de tu marca u organización",
-      "Personal Shopper incluido para llevar la estrategia a tu guardarropa real",
+      "Personal Shopper (2hrs) incluido para llevar la estrategia a tu guardarropa real",
       "Seguimiento extendido para sostener el cambio en el tiempo",
       "Formato: Online / Híbrido — la modalidad híbrida incluye acompañamiento de compras presencial en tu ciudad, sujeto a disponibilidad geográfica (consultar)",
       "Revista Personalizada impresa incluida sin costo adicional (único paquete que la incluye dentro del servicio)",
@@ -111,7 +114,10 @@ export const servicios: Servicio[] = [
     title: "Personal Shopper",
     desc: "Aplicamos lo aprendido: seleccionamos juntos/as prendas concretas para tu cuerpo, tu colorimetría y tus objetivos.",
     icon: "shoppingbag",
+    priceLabel: "$100 USD / hora",
+    conditions: "Si contratás este servicio de forma independiente, necesitás contar antes con tu Colorimetría (individual o integral).",
     bullets: [
+      "Requisito previo: contar antes con tu Colorimetría (individual o integral)",
       "Entrevista inicial por videollamada — al confirmar tu reserva recibes un enlace con una breve encuesta para conocerte antes de la sesión",
       "Modalidad online: selección curada de prendas y tiendas según tu perfil, enviada en guía digital",
       "Modalidad híbrida: acompañamiento en tiempo real durante tu compra (sujeto, cantidad de horas, ciudad y disponibilidad)",

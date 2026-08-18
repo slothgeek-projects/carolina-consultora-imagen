@@ -73,7 +73,7 @@ export const terminos: LegalDoc = {
     {
       heading: "Reserva y pago",
       body: [
-        "La reserva de los servicios de Análisis de Colorimetría (individual e integral), Análisis Corporal y Facial, Personal Shopper e Imagen Esencial se confirma con el pago del 100% del valor del servicio.",
+        "La reserva de los servicios de Análisis de Colorimetría (individual e integral), Análisis Corporal y Facial, Personal Shopper e Imagen Personal se confirma con el pago del 100% del valor del servicio.",
         "Para los paquetes Imagen Profesional e Imagen Empresarial, la reserva se confirma con el pago del 50% del valor total. El 50% restante debe cancelarse una vez completadas todas las sesiones del proceso; la guía final o Revista Personalizada correspondiente se entrega una vez cancelado el 100% del servicio.",
         "Una vez confirmada la reserva, el/la cliente recibe un cronograma del proceso completo, con las fechas propuestas para cada sesión y para la entrega de las guías correspondientes. Este cronograma puede ajustarse según disponibilidad de ambas partes.",
         "En todos los casos, una vez confirmado el pago (total o el 50% inicial), el/la cliente recibe un enlace con una breve encuesta previa a la entrevista inicial. Los precios se publican en dólares estadounidenses (USD), salvo acuerdo distinto expresado por ambas partes.",
@@ -90,7 +90,7 @@ export const terminos: LegalDoc = {
     {
       heading: "Entrega de guías digitales",
       body: [
-        "Todas las guías, paletas de color y recomendaciones se entregan en formato digital como parte estándar del servicio, dentro del plazo indicado para cada paquete.",
+        "Todas las guías, paletas de color y recomendaciones se entregan en formato digital como parte estándar del servicio, dentro del plazo indicado para cada servicio.",
       ],
     },
     {

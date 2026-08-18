@@ -11,22 +11,27 @@
 }
 
 /* ── Track ───────────────────────────────────────────────── */
-/* El gap va en el contenedor: con padding-left en los slides, el primero
-   quedaba 16px más ancho y desalineado respecto al resto en el loop. */
+/* Espaciado al estilo Embla: margin-left negativo en el contenedor +
+   padding-left en cada slide. NO usar `gap` de flexbox: Embla mide el hueco
+   final leyendo el margin-right del último slide (0 con `gap`), el contenido
+   le queda un gap corto y canLoop() desactiva el loop en silencio.
+   Con este esquema todos los slides miden igual, así que no hay el desfase
+   de 16px del primero que motivó el cambio a `gap`. */
 .embla__container {
   --slide-gap: 1rem;
   display: flex;
   touch-action: pan-y pinch-zoom;
-  gap: var(--slide-gap);
+  margin-left: calc(-1 * var(--slide-gap));
 }
 
 /* ── Each slide ──────────────────────────────────────────── */
+/* El ancho del contenedor es viewport + gap (por el margin negativo), por eso
+   el basis es 100% / n limpio y el padding queda dentro gracias a border-box. */
 .embla__slide {
-  flex: 0 0 calc(
-    (100% - (var(--slides-per-view, 1) - 1) * var(--slide-gap)) /
-      var(--slides-per-view, 1)
-  );
+  flex: 0 0 calc(100% / var(--slides-per-view, 1));
   min-width: 0;
+  padding-left: var(--slide-gap);
+  box-sizing: border-box;
 }
 
 /* ── Controls (arrows + dots) ────────────────────────────── */

@@ -168,6 +168,14 @@ function ServicioModal({
 
           <div className="w-7 h-px bg-ink my-6" />
 
+          {
+            servicio.conditions && (
+              <p className="font-body font-light text-[15px] leading-[1.5] mb-7 bg-[#FFF4E5] border-l-4 border-[#FFB74D] pl-4 py-2">
+                {servicio.conditions}
+              </p>
+            )
+          }
+
           <p className="font-body font-light text-[15px] leading-[1.9] mb-7">
             {servicio.desc}
           </p>
@@ -182,7 +190,6 @@ function ServicioModal({
               </li>
             ))}
           </ul>
-
           <a
             href={AGENDA_URL}
             className="block w-full text-center py-4 border border-ink text-ink font-body text-[11px] md:text-[10px] tracking-[0.08em] uppercase hover:bg-ink hover:text-white transition-all duration-200"

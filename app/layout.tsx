@@ -30,7 +30,7 @@ export const metadata: Metadata = {
      Sin esto, Next falla el build al encontrar un path relativo en og:image. */
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Asesoría de Imagen Online en Costa Rica | Carolina Salazar",
+    default: "Asesoría de Imagen Online | Costa Rica y Latinoamérica – Carolina Salazar",
     template: `%s | ${PERSON_NAME}`,
   },
   description: SITE_DESCRIPTION,

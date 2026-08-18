@@ -19,15 +19,15 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: "¿Cuánto dura el proceso de asesoría de imagen?",
-    a: "Depende del paquete elegido. El Esencial dura entre 2 y 3 semanas. El Profesional, entre 3 y 5 semanas. El Premium incluye seguimiento extendido de hasta 6 semanas. Todo se adapta a tu ritmo y disponibilidad.",
+    a: "Depende del paquete elegido. El Personal dura entre 2 y 3 semanas. El Profesional, entre 3 y 5 semanas. El Empresarial incluye seguimiento extendido de hasta 6 semanas. Todo se adapta a tu ritmo y disponibilidad.",
   },
   {
     q: "¿Cómo sé cuál paquete es el correcto para mí?",
-    a: "Si estás comenzando o quieres explorar el servicio, el Esencial es tu punto de partida perfecto. Si tienes metas profesionales claras y buscas coherencia total de imagen, el Profesional es el más elegido. Si representas una marca personal, lideras un equipo o necesitas acompañamiento estratégico completo, el Premium maximiza tu inversión. Escríbeme si tienes dudas — te oriento sin ningún compromiso.",
+    a: "Si estás comenzando o quieres explorar el servicio, el Personal es tu punto de partida perfecto. Si tienes metas profesionales claras y buscas coherencia total de imagen, el Profesional es el más elegido. Si representas una marca personal, lideras un equipo o necesitas acompañamiento estratégico completo, el Empresarial maximiza tu inversión. Escríbeme si tienes dudas — te oriento sin ningún compromiso.",
   },
   {
     q: "¿El servicio incluye personal shopper o acompañamiento de compras?",
-    a: "El Personal Shopper es un servicio adicional disponible en el Paquete Premium. También puede contratarse como complemento del Profesional. En él te acompañamos a seleccionar prendas específicas que funcionan para tu cuerpo, tu colorimetría y tus objetivos, de forma online o híbrida.",
+    a: "El Personal Shopper es un servicio adicional disponible en el Paquete Empresarial. También puede contratarse como complemento del Profesional. En él te acompañamos a seleccionar prendas específicas que funcionan para tu cuerpo, tu colorimetría y tus objetivos, de forma online o híbrida.",
   },
   {
     q: "¿Puedo tomar solo el análisis de colorimetría?",
@@ -35,6 +35,6 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: "¿Atiendes clientes fuera de Costa Rica?",
-    a: "Sí. Al ser una consultoría de imagen 100% online, trabajo con profesionales, ejecutivos y emprendedores de habla hispana en cualquier país de Latinoamérica y Centroamérica, además de Costa Rica. No importa dónde estés: accedés al mismo proceso personalizado, y las sesiones se coordinan según tu zona horaria.",
+    a: "Sí, al ser una consultoría de imagen 100% online, trabajo con profesionales, ejecutivos y emprendedores de habla hispana en cualquier país de Latinoamérica y Centroamérica, además de Costa Rica. No importa dónde estés: accedés al mismo proceso personalizado, y las sesiones se coordinan según tu zona horaria.",
   },
 ];

@@ -174,8 +174,7 @@ export default function Home() {
             <ul className="flex flex-wrap gap-2 mb-9 list-none">
               {[
                 "Consultoría de Imagen Estratégica",
-                "Análisis de Colorimetría",
-                "Personal Shopper Online",
+                "Análisis de Colorimetría"
               ].map((pill) => (
                 <li
                   key={pill}
@@ -190,7 +189,7 @@ export default function Home() {
             <div>
               <a
                 href="#servicios"
-                className="block sm:inline-block text-center px-9 py-4 bg-ink text-white font-body text-[11px] md:text-[10px] tracking-[0.14em] uppercase hover:bg-[#333] transition-colors duration-200"
+                className="block sm:inline-block text-center px-9 py-4 bg-ink text-white font-body text-[11px] md:text-[10px] tracking-[0.14em] uppercase hover:bg-[#333] transition-colors duration-200 animate-pulse"
               >
                 Ver todos los servicios
               </a>
@@ -243,14 +242,14 @@ export default function Home() {
       </section>
 
       {/* ── 3. SERVICIOS ────────────────────────────────────────── */}
-      <section id="servicios" className="py-20 md:py-28 bg-white" style={{background: "linear-gradient(to bottom, #f9f9f9 0%, #fff 100%)"}}>
+      <section id="servicios" className="py-20 md:py-28 bg-white" style={{ background: "linear-gradient(to bottom, #f9f9f9 0%, #fff 100%)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <AnimatedSection className="text-center mb-14 space-y-4 max-w-3xl mx-auto">
             <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle">
               Servicios de asesoría de imagen online
             </p>
             <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
-              ¿Qué es la asesoría de imagen personal?
+              ¿Qué es la asesoría de imagen estratégica?
             </h2>
             <div className="w-7 h-px bg-ink mx-auto" />
             <p className="font-body font-light text-base md:text-[15px] leading-[1.9]">
@@ -295,25 +294,25 @@ export default function Home() {
             {/* TODO: revisar y ajustar este texto con la bio real de Carolina */}
             <AnimatedSection delay={100}>
               <p className="font-body text-[10px] tracking-[0.18em] uppercase text-subtle mb-4">
-                Sobre mí
+                Sobre
               </p>
               <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1] mb-5">
                 Carolina Salazar
               </h2>
               <div className="w-7 h-px bg-ink mb-6" />
               <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mb-5">
-                Soy <strong className="font-medium text-ink">consultora de imagen certificada</strong>, 
-                especializada en imagen personal, profesional y empresarial. Trabajo de forma 100% online 
-                con profesionales, líderes y emprendedores de todo el mundo de habla hispana que saben que 
+                Soy <strong className="font-medium text-ink">consultora de imagen certificada</strong>,
+                especializada en imagen personal, profesional y empresarial. Trabajo de forma 100% online
+                con profesionales, líderes y emprendedores de todo el mundo de habla hispana que saben que
                 su presencia visual es parte de su estrategia — no un accesorio.
               </p>
               <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mb-8">
-                Mi enfoque no es sobre moda ni tendencias. Es sobre identidad: entender quién eres, dónde 
+                Mi enfoque no es sobre moda ni tendencias. Es sobre identidad: entender quién eres, dónde
                 vas y asegurarte de que tu imagen trabaje a tu favor antes de que abras la boca.
               </p>
               <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mb-8">
-                Cada proceso es profundamente personalizado — porque no existe una fórmula universal para 
-                proyectar autoridad, autenticidad y presencia. Lo que sí existe es un método claro: 
+                Cada proceso es profundamente personalizado — porque no existe una fórmula universal para
+                proyectar autoridad, autenticidad y presencia. Lo que sí existe es un método claro:
                 entender primero, transformar después.
               </p>
               <a
@@ -338,14 +337,14 @@ export default function Home() {
               Consultoría de imagen
             </p>
             <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
-              Paquetes de asesoría
+              Servicios destacados
             </h2>
             <div className="w-7 h-px bg-ink mx-auto mt-5" />
           </AnimatedSection>
 
           {/* Package cards — apiladas hasta lg: a 768px tres columnas dejaban
               ~170px de contenido por tarjeta. divide-y las separa al apilarse. */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 items-end divide-y divide-edge lg:divide-y-0">
+          <div className="grid grid-cols-1 lg:grid-cols-3 items-start divide-y divide-edge lg:divide-y-0">
             {/* Esencial */}
             <AnimatedSection delay={0}>
               <div className="bg-white p-7 sm:p-8 lg:p-10 relative hover:bg-[#fafafa] transition-colors duration-200 h-full">
@@ -363,9 +362,10 @@ export default function Home() {
                 <ul className="space-y-3 mb-8">
                   {[
                     "Entrevista inicial y análisis de objetivos",
-                    "Análisis de morfología corporal",
-                    "Colorimetría personal básica",
-                    "Guía de recomendaciones esencial",
+                    "Análisis facial y de morfología corporal",
+                    "Análisis de colorimetría",
+                    "Guía de recomendaciones personal",
+                    "Plan de aplicación para tu guardarropa actual"
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="mt-0.5 flex-shrink-0"><Check size={16} strokeWidth={1.5} className="text-ink" /></span>
@@ -385,7 +385,7 @@ export default function Home() {
 
             {/* Profesional — FEATURED */}
             <AnimatedSection delay={80}>
-              <div className="bg-ink p-7 sm:p-8 lg:p-10 relative lg:-mt-6 shadow-xl h-full">
+              <div className="bg-ink p-7 sm:p-8 lg:p-10 relative shadow-xl h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="inline-block font-body text-[10px] tracking-[0.14em] uppercase text-white border border-white/30 px-3 py-1">
                     {paqueteProfesional.badge}
@@ -408,10 +408,12 @@ export default function Home() {
                 </p>
                 <ul className="space-y-3 mb-8">
                   {[
-                    "Todo lo incluido en el Paquete Esencial",
-                    "Análisis facial completo",
-                    "Definición de estilo personal o profesional",
-                    "Guía visual avanzada con ejemplos prácticos",
+                    "Entrevista inicial y análisis de objetivos",
+                    "Análisis facial y de morfología corporal",
+                    "Análisis de colorimetría integral",
+                    "Definición de estilo ejecutivo/profesional según tu sector",
+                    "Guía visual con combinaciones listas para reuniones, entrevistas o eventos clave",
+                    "Recomendaciones de accesorios y grooming",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="mt-0.5 flex-shrink-0">
@@ -447,10 +449,13 @@ export default function Home() {
                 </p>
                 <ul className="space-y-3 mb-8">
                   {[
-                    "Asesoría integral completa",
-                    "Estrategia de imagen profesional",
-                    "Personal Shopper (online o híbrido)",
-                    "Seguimiento personalizado extendido",
+                    "Entrevista inicial y análisis de objetivos",
+                    "Análisis facial y de morfología corporal",
+                    "Análisis de colorimetría integral",
+                    "Auditoría de tu imagen actual frente a tu rol de liderazgo",
+                    "Identidad y valores alianeados a tu marca u organización",
+                    "Personal Shopper (2hrs)",
+                    "Seguimiento extendido para sostener el cambio en el tiempo",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="mt-0.5 flex-shrink-0"><Check size={16} strokeWidth={1.5} className="text-ink" /></span>
@@ -547,9 +552,9 @@ export default function Home() {
             {/* Los nombres de país en texto visible son la señal geográfica real:
                 sin dirección física, el schema por sí solo no la sostiene. */}
             <p className="font-body font-light text-base md:text-[15px] leading-[1.9] mt-6">
-              Trabajo <strong className="font-medium text-ink">100% online</strong> con clientes en 
-              toda Costa Rica y con profesionales de habla hispana en cualquier país de Latinoamérica 
-              y Centroamérica. <strong className="font-medium text-ink">No importa la ciudad ni el país donde estés</strong>: el proceso es exactamente 
+              Trabajo <strong className="font-medium text-ink">100% online</strong> con clientes en
+              toda Costa Rica y con profesionales de habla hispana en cualquier país de Latinoamérica
+              y Centroamérica. <strong className="font-medium text-ink">No importa la ciudad ni el país donde estés</strong>: el proceso es exactamente
               el mismo, personalizado y cercano, y las sesiones se coordinan según tu zona horaria.
             </p>
           </AnimatedSection>
@@ -591,15 +596,15 @@ export default function Home() {
           <AnimatedSection delay={100}>
             <div className="bg-ink p-6 sm:p-10 lg:p-14 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
               <div>
-                <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/50 mb-6">
+                <p className="font-body text-[14px] tracking-[0.18em] uppercase text-white/50 mb-6">
                   Herramientas de trabajo
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10">
                   {[
-                    { name: "Videollamadas", subtitle: "Zoom · Google Meet", icon: <Video size={22} strokeWidth={1.5} /> },
-                    { name: "Análisis fotográfico", subtitle: "Fotografías de alta calidad", icon: <Camera size={22} strokeWidth={1.5} /> },
-                    { name: "Guías visuales", subtitle: "Canva · Google Drive", icon: <FileText size={22} strokeWidth={1.5} /> },
-                    { name: "Seguimiento", subtitle: "WhatsApp directo", icon: <MessageSquare size={22} strokeWidth={1.5} /> },
+                    { name: "Videollamadas", subtitle: "Zoom · Google Meet", icon: <Video size={30} strokeWidth={1.5} /> },
+                    { name: "Análisis fotográfico", subtitle: "Fotografías de alta calidad", icon: <Camera size={30} strokeWidth={1.5} /> },
+                    { name: "Guías visuales", subtitle: "Canva · Google Drive", icon: <FileText size={30} strokeWidth={1.5} /> },
+                    { name: "Seguimiento", subtitle: "WhatsApp directo", icon: <MessageSquare size={30} strokeWidth={1.5} /> },
                   ].map((tool) => (
                     <div key={tool.name} className="flex flex-col gap-2 p-4 bg-ink hover:bg-white/5 transition-colors duration-200">
                       <span className="text-white/60">{tool.icon}</span>
@@ -762,10 +767,9 @@ export default function Home() {
               {
                 label: "Paquetes",
                 links: [
-                  { label: "Imagen Esencial", href: "#paquetes" },
+                  { label: "Imagen Personal", href: "#paquetes" },
                   { label: "Imagen Profesional", href: "#paquetes" },
                   { label: "Imagen Empresarial", href: "#paquetes" },
-                  { label: "Personal Shopper", href: "#paquetes" },
                 ],
               },
               {
