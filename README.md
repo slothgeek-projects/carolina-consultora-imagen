@@ -20,6 +20,31 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Blog (WordPress headless)
+
+El blog de `/blog` se sirve en SSR contra un WordPress externo. Requiere una
+variable de entorno en `.env`:
+
+```bash
+# Base del WordPress, sin /wp-json al final
+WP_API_URL=https://cms.tu-dominio.com
+```
+
+Sin esa variable las rutas de `/blog` muestran su pantalla de error y el bloque
+de últimas entradas de la home simplemente no aparece; el resto del sitio no se
+ve afectado.
+
+El contrato de datos (custom post type `articulo`, taxonomía
+`categoria_articulo` y campos ACF) está documentado en
+`docs/superpowers/specs/2026-09-04-blog-wordpress-acf-design.md`. Toda la
+comunicación con WordPress vive en `lib/wp.ts`.
+
+Tests de los mappers de la REST:
+
+```bash
+npm test
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

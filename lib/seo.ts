@@ -4,6 +4,7 @@
 
 import { faqItems } from "@/data/faq";
 import { CURRENCY, paquetes } from "@/data/packages";
+import type { Post } from "@/lib/definitions";
 
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://carolinaimagen.com"
@@ -235,6 +236,83 @@ export function buildJsonLd() {
           name: item.q,
           acceptedAnswer: { "@type": "Answer", text: item.a },
         })),
+      },
+    ],
+  };
+}
+
+/* ── Blog ────────────────────────────────────────────────────────────────
+   Los artículos cuelgan del mismo grafo que la home: author y publisher
+   apuntan por @id a la Person y la Organization ya declaradas, en vez de
+   repetir la entidad y arriesgar que Google las trate como distintas. */
+
+export const BLOG_URL = `${SITE_URL}/blog`;
+
+export function buildBlogJsonLd(posts: Array<Post>) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": `${BLOG_URL}#blog`,
+        url: BLOG_URL,
+        name: `Blog de imagen personal y profesional — ${PERSON_NAME}`,
+        description:
+          "Artículos sobre colorimetría, morfología, estilo personal e imagen profesional.",
+        inLanguage: "es",
+        publisher: { "@id": ORG_ID },
+        blogPost: posts.map((post) => ({
+          "@type": "BlogPosting",
+          "@id": `${SITE_URL}/blog/${post.slug}#article`,
+          headline: post.titulo,
+          url: `${SITE_URL}/blog/${post.slug}`,
+          datePublished: post.fecha,
+          dateModified: post.fechaModificada || post.fecha,
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${BLOG_URL}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: BLOG_URL },
+        ],
+      },
+    ],
+  };
+}
+
+export function buildPostJsonLd(post: Post) {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  const imagen = post.ogImagen?.url ?? post.imagen?.url ?? `${SITE_URL}/og-image.jpg`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#article`,
+        headline: post.titulo,
+        description: post.seoDescripcion ?? post.extracto,
+        url,
+        image: imagen,
+        datePublished: post.fecha,
+        dateModified: post.fechaModificada || post.fecha,
+        inLanguage: "es",
+        author: { "@id": PERSON_ID },
+        publisher: { "@id": ORG_ID },
+        isPartOf: { "@id": `${BLOG_URL}#blog` },
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        ...(post.categoria ? { articleSection: post.categoria.nombre } : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: BLOG_URL },
+          { "@type": "ListItem", position: 3, name: post.titulo, item: url },
+        ],
       },
     ],
   };

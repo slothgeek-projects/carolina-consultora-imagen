@@ -123,3 +123,98 @@ export type Availabitity = {
     end: string;
     date: string;
 };
+
+/* ── Blog (WordPress + ACF) ──────────────────────────────────────────────
+   WpRaw* describen la forma cruda de la REST de WordPress; Post y Categoria
+   son los tipos que consume el front. La traducción entre ambos vive en
+   lib/wp.ts y no debe filtrarse a los componentes. */
+
+export type WpRawRendered = { rendered: string };
+
+export type WpRawMedia = {
+    id?: number;
+    source_url?: string;
+    alt_text?: string;
+    media_details?: { width?: number; height?: number };
+    /* La REST devuelve un objeto de error en _embedded cuando el adjunto
+       ya no existe; se distingue por esta clave. */
+    code?: string;
+};
+
+export type WpRawTerm = {
+    id: number;
+    name: string;
+    slug: string;
+    taxonomy: string;
+};
+
+/** Imagen de ACF con acf_format=standard. Si falta el parámetro llega un id. */
+export type WpRawAcfImage = {
+    url?: string;
+    alt?: string;
+    width?: number;
+    height?: number;
+};
+
+export type WpRawAcf = {
+    extracto?: string;
+    tiempo_lectura?: number | string;
+    destacado?: boolean;
+    seo_title?: string;
+    seo_description?: string;
+    og_image?: WpRawAcfImage | number | false | null;
+    cta_texto?: string;
+    cta_enlace?: string;
+};
+
+export type WpRawPost = {
+    id: number;
+    slug: string;
+    date_gmt: string;
+    modified_gmt: string;
+    title: WpRawRendered;
+    content: WpRawRendered;
+    acf?: WpRawAcf;
+    _embedded?: {
+        "wp:featuredmedia"?: Array<WpRawMedia>;
+        "wp:term"?: Array<Array<WpRawTerm>>;
+    };
+};
+
+export type Imagen = {
+    url: string;
+    alt: string;
+    width?: number;
+    height?: number;
+};
+
+export type Categoria = {
+    id: number;
+    nombre: string;
+    slug: string;
+};
+
+export type Post = {
+    id: number;
+    slug: string;
+    titulo: string;
+    /** HTML del editor, sin sanitizar. Solo articleBody.tsx lo inyecta. */
+    contenidoHtml: string;
+    extracto: string;
+    fecha: string;
+    fechaModificada: string;
+    tiempoLectura: number | null;
+    destacado: boolean;
+    imagen: Imagen | null;
+    categoria: Categoria | null;
+    seoTitulo: string | null;
+    seoDescripcion: string | null;
+    ogImagen: Imagen | null;
+    cta: { texto: string; enlace: string } | null;
+};
+
+export type ListadoPosts = {
+    posts: Array<Post>;
+    totalPages: number;
+    total: number;
+};

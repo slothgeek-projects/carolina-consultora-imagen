@@ -11,8 +11,13 @@ const links = [
   { label: "Sobre", href: "#sobre-mi" },
   { label: "Paquetes", href: "#paquetes" },
   { label: "Proceso", href: "#proceso" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "#faq" },
 ];
+
+/* Este nav solo se monta en la home, por eso el resto de enlaces siguen siendo
+   anclas. El del blog es una ruta real: va con Link para navegar sin recargar. */
+const esRuta = (href: string) => href.startsWith("/");
 
 const linkClass =
   "font-body text-[10px] tracking-[0.14em] uppercase text-ink hover:text-mid transition-colors duration-200";
@@ -28,7 +33,11 @@ function NavInner({ onMenuToggle }: { onMenuToggle: () => void }) {
       <ul className="hidden md:flex gap-6 lg:gap-7 list-none">
         {links.map((l) => (
           <li key={l.href}>
-            <a href={l.href} className={linkClass}>{l.label}</a>
+            {esRuta(l.href) ? (
+              <Link href={l.href} className={linkClass}>{l.label}</Link>
+            ) : (
+              <a href={l.href} className={linkClass}>{l.label}</a>
+            )}
           </li>
         ))}
       </ul>
@@ -101,16 +110,19 @@ export default function Nav() {
               <X size={22} strokeWidth={1.5} aria-hidden />
             </button>
           </div>
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={closeMenu}
-              className="font-body text-[12px] tracking-[0.14em] uppercase text-ink py-4 border-b border-edge"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const clase =
+              "font-body text-[12px] tracking-[0.14em] uppercase text-ink py-4 border-b border-edge";
+            return esRuta(l.href) ? (
+              <Link key={l.href} href={l.href} onClick={closeMenu} className={clase}>
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.href} href={l.href} onClick={closeMenu} className={clase}>
+                {l.label}
+              </a>
+            );
+          })}
           <Link
             href={AGENDA_URL}
             onClick={closeMenu}

@@ -78,3 +78,79 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Cuerpo del artículo del blog ────────────────────────────────────────
+   El HTML llega del editor de WordPress ya sanitizado, así que no se puede
+   poner una clase en cada etiqueta: se estiliza por descendencia. Acotado a
+   .prose-pantera para no afectar al resto del sitio, y limitado a las
+   etiquetas de la allowlist de articleBody.tsx. */
+
+.prose-pantera {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.9;
+  color: color-mix(in srgb, var(--color-ink) 78%, transparent);
+}
+
+.prose-pantera > * + * { margin-top: 1.5em; }
+
+.prose-pantera h2,
+.prose-pantera h3,
+.prose-pantera h4 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-ink);
+  line-height: 1.25;
+  margin-top: 2.2em;
+  margin-bottom: 0.7em;
+}
+.prose-pantera h2 { font-size: 28px; }
+.prose-pantera h3 { font-size: 22px; }
+.prose-pantera h4 { font-size: 18px; }
+
+.prose-pantera a {
+  color: var(--color-mid);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+.prose-pantera a:hover { color: var(--color-ink); }
+
+.prose-pantera strong { font-weight: 600; color: var(--color-ink); }
+
+.prose-pantera ul,
+.prose-pantera ol { padding-left: 1.3em; }
+.prose-pantera ul { list-style: disc; }
+.prose-pantera ol { list-style: decimal; }
+.prose-pantera li { margin-top: 0.5em; }
+.prose-pantera li::marker { color: var(--color-mid); }
+
+.prose-pantera blockquote {
+  border-left: 1px solid var(--color-mid);
+  padding-left: 1.5em;
+  font-family: var(--font-heading);
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+.prose-pantera img { display: block; width: 100%; height: auto; }
+.prose-pantera figure { margin-top: 2.2em; margin-bottom: 2.2em; }
+.prose-pantera figcaption {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  margin-top: 0.8em;
+}
+
+.prose-pantera hr { border: 0; border-top: 1px solid var(--color-edge); margin: 3em 0; }
+
+/* El editor puede pegar tablas anchas: que desborde la tabla, no la página. */
+.prose-pantera table { width: 100%; border-collapse: collapse; font-size: 14px; display: block; overflow-x: auto; }
+.prose-pantera th,
+.prose-pantera td { border: 1px solid var(--color-edge); padding: 0.7em 1em; text-align: left; }
+.prose-pantera th { font-weight: 500; color: var(--color-ink); }
+
+/* Vídeo incrustado de YouTube/Vimeo con proporción 16:9 */
+.prose-pantera iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; }

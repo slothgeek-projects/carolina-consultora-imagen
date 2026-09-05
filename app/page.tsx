@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import Nav from "./components/Nav";
 import AnimatedSection from "./components/AnimatedSection";
+import UltimasEntradas from "@/features/blog/components/ultimasEntradas";
 
 import FAQAccordion from "./components/FAQAccordion";
 import ServiciosGrid from "./components/ServiciosGrid";
@@ -731,6 +733,13 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* ── BLOG ────────────────────────────────────────────────── */}
+      {/* Fuera del Suspense la home no espera al WordPress; dentro, si el CMS
+          falla, UltimasEntradas devuelve null y la sección desaparece. */}
+      <Suspense fallback={null}>
+        <UltimasEntradas />
+      </Suspense>
 
       {/* ── FOOTER ──────────────────────────────────────────────── */}
       <footer className="bg-ink">
