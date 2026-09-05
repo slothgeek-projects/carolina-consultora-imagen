@@ -31,7 +31,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: "¿Puedo tomar solo el análisis de colorimetría?",
-    a: "Algunos servicios pueden tomarse de forma individual, como el análisis de colorimetría o la guía de estilo. Si buscas algo puntual, escríbeme directamente y buscamos juntas la opción que mejor se adapta a tu necesidad.",
+    a: "Algunos servicios pueden tomarse de forma individual, como el análisis de colorimetría personal o integral. Si buscas algo puntual, escríbeme directamente y buscamos juntas/os la opción que mejor se adapta a tu necesidad.",
   },
   {
     q: "¿Atiendes clientes fuera de Costa Rica?",

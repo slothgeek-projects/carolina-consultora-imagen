@@ -22,21 +22,18 @@ import {
   Video,
 } from "lucide-react";
 
+import { InstagramIcon } from "./components/custom-icons";
 import { WHATSAPP_URL } from "@/lib/seo";
 
 const AGENDA_URL = "/agendar";
 
 /* lucide-react ya no incluye íconos de marca, así que WhatsApp e Instagram
-   siguen siendo SVG propios. El resto viene de lucide. */
+   siguen siendo SVG propios. El de Instagram vive en custom-icons porque la
+   página de mantenimiento también lo usa. El resto viene de lucide. */
 const IconWhatsApp = ({ size = 20 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.851L.049 23.5a.5.5 0 0 0 .613.613l5.699-1.484A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.664-.528-5.176-1.443l-.37-.22-3.839 1 .998-3.745-.238-.383A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
-  </svg>
-);
-const IconInstagram = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
   </svg>
 );
 /* Los perfiles "Empresas y Equipos" se retiraron: aún no hay
@@ -81,34 +78,38 @@ const benefits = [
 
 const testimonialSlides = [
   <div key="t1" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
-    <div className="absolute top-4 left-5 sm:top-6 sm:left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8">
-      Siempre sentí que mi ropa no me representaba del todo. Después de la asesoría llegué a reuniones importantes sintiéndome la{" "}
-      <strong className="font-medium text-white">versión más poderosa de mí misma</strong>. El cambio fue inmediato — no solo en cómo me veía, sino en cómo me percibían los demás.
-    </p>
-    <div className="flex items-center gap-4">
-      <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex-shrink-0 overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
+    <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] items-center gap-8">
+      <div>
+        <Image
+          src="/reviews/adina.webp"
+          alt="María Cascante"
+          className="object-cover"
+          width={300}
+          height={400}
+        />
       </div>
       <div>
-        <p className="font-body font-medium text-sm text-white">Karina Víquez.</p>
-        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Ejecutiva/Emprendedora</p>
-      </div>
-    </div>
-  </div>,
+        <div className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8 space-y-2">
+          <p>
+            <strong className="font-medium text-white"> “La asesoría me ayudó a volver a verme con otros ojos.”</strong> Carolina me enseñó exactamente qué prendas funcionan para mi cuerpo, mi colorimetría y mis objetivos. Por primera vez en mi vida compro con criterio, no por impulso.
+          </p>
+          <p>
+            Antes de realizar mi Consultoría de Imagen Personal no me sentía completamente segura ni feliz con mi apariencia. Con el paso de los años había dejado de reconocerme.
+          </p>
+          <p>
+            Durante la asesoría descubrí los colores, prendas y detalles que realmente me favorecen, pero lo más importante fue recuperar mi seguridad y una nueva forma de mirarme.
+          </p>
+          <p>
+            Hoy me siento más femenina, segura y llena de vida. Esta experiencia me recordó que nunca es tarde para reencontrarnos con nosotras mismas.
+          </p>
+        </div>
 
-  <div key="t2" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
-    <div className="absolute top-4 left-5 sm:top-6 sm:left-8 font-heading text-5xl text-white/25 leading-none select-none" aria-hidden>&ldquo;</div>
-    <p className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8">
-      <strong className="font-medium text-white">Gasto la mitad y me siento el doble de segura.</strong> Carolina me enseñó exactamente qué prendas funcionan para mi cuerpo, mi colorimetría y mis objetivos. Por primera vez en mi vida compro con criterio, no por impulso.
-    </p>
-    <div className="flex items-center gap-4">
-      <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex-shrink-0 overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">Foto</div>
-      </div>
-      <div>
-        <p className="font-body font-medium text-sm text-white">Adina Mora.</p>
-        <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Emprendedora</p>
+        <div className="flex items-center gap-4">
+          <div>
+            <p className="font-body font-medium text-sm text-white">María Cascante.</p>
+            <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Emprendedora</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -282,7 +283,7 @@ export default function Home() {
             <AnimatedSection>
               {/* TODO: reemplazar por la foto definitiva de Carolina si hay una nueva */}
               <Image
-                src="/hero/quiensoy.png"
+                src="/quiensoy.png"
                 alt="Carolina Salazar, asesora de imagen internacional certificada, consultora de imagen personal y profesional en Costa Rica"
                 width={1080}
                 height={1350}
@@ -616,7 +617,7 @@ export default function Home() {
               </div>
               <div>
                 <Image
-                  src="/hero/online.webp"
+                  src="/online.webp"
                   alt="Sesión de asesoría de imagen online por videollamada con clientes de Costa Rica y Latinoamérica"
                   width={1600}
                   height={1280}
@@ -664,7 +665,7 @@ export default function Home() {
 
         {/* Testimonios */}
         <div className="relative py-20 md:py-28 overflow-hidden">
-          <div className="relative max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
+          <div className="relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
             <AnimatedSection className="text-center mb-14">
               <p className="font-body text-[10px] tracking-[0.18em] uppercase text-white/50 mb-4">
                 Prueba social
@@ -684,7 +685,7 @@ export default function Home() {
 
             <AnimatedSection delay={200} className="text-center mt-12">
               <p className="font-body font-light text-[15px] text-white/70 mb-6">
-                ¿Lista para escribir tu propio caso de éxito?
+                ¿Lista/o para escribir tu propio caso de éxito?
               </p>
               <a
                 href={AGENDA_URL}
@@ -746,7 +747,7 @@ export default function Home() {
               {/* -ml-3 compensa el padding táctil para que los iconos sigan alineados */}
               <div className="flex items-center gap-1 -ml-3">
                 <a href="https://www.instagram.com/pielpanteracollections" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
-                  <IconInstagram />
+                  <InstagramIcon className="w-[18px] h-[18px]" />
                 </a>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
                   <IconWhatsApp size={18} />
