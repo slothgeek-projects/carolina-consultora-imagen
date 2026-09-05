@@ -45,7 +45,7 @@ export default function Mantenimiento() {
             Sitio en mantenimiento — Carolina Salazar
           </p>
           <h1 className="font-heading text-[clamp(34px,7vw,68px)] font-normal leading-[1.04] tracking-[-0.01em] text-ink mb-7">
-            carolinaimage.com{" "}
+            carolinaimagen.com{" "}
             <em className="text-mid">Próximamente</em>
           </h1>
           <div className="w-8 h-px bg-ink mb-6" />
