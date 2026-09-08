@@ -15,7 +15,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: "¿Cuáles son los resultados concretos que puedo esperar?",
-    a: "Nuestros clientes reportan mayor seguridad al vestir, coherencia entre su imagen y sus objetivos profesionales, y claridad absoluta al comprar. Recibirás una guía visual personalizada que puedes usar en cualquier momento. Los cambios en confianza son inmediatos; los resultados en tu entorno se perciben en 2 a 3 semanas de aplicación.",
+    a: "Nuestros clientes reportan mayor seguridad al vestir, coherencia entre su imagen y sus objetivos profesionales, y claridad absoluta al comprar. Recibirás una guía visual personalizada que puedes usar en cualquier momento.",
   },
   {
     q: "¿Cuánto dura el proceso de asesoría de imagen?",

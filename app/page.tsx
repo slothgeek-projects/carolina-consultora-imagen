@@ -520,7 +520,7 @@ export default function Home() {
                     "Análisis facial y de morfología corporal",
                     "Análisis de colorimetría integral",
                     "Auditoría de tu imagen actual frente a tu rol de liderazgo",
-                    "Identidad y valores alianeados a tu marca u organización",
+                    "Identidad y valores alianeados",
                     "Personal Shopper (2hrs)",
                     "Seguimiento extendido para sostener el cambio en el tiempo",
                   ].map((item) => (
@@ -876,7 +876,7 @@ export default function Home() {
 
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <p className="font-body font-light text-xs text-white/50 order-2 md:order-1">
-              © 2025 Piel Pantera Collections. Todos los derechos reservados.
+              © 2026 Carolina Salazar · Consultora de Imagen Estratégica.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 order-1 md:order-2">
               {[
@@ -892,9 +892,6 @@ export default function Home() {
                 ↑ Inicio
               </a>
             </div>
-            <p className="font-body font-light text-xs text-white/50 order-3">
-              Carolina Salazar · Consultora de Imagen Estratégica
-            </p>
           </div>
         </div>
       </footer>
