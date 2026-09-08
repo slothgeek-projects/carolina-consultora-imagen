@@ -20,7 +20,7 @@ export default async function UltimasEntradas() {
             Blog
           </p>
           <h2 className="font-heading text-[clamp(28px,4.4vw,46px)] font-normal text-ink leading-[1.1]">
-            Ideas para vestir tu propósito
+            Hay más por descubrir, seguí explorando
           </h2>
           <div className="w-7 h-px bg-ink mx-auto mt-5" />
         </AnimatedSection>

@@ -6,7 +6,7 @@ import { buildBlogJsonLd, PERSON_NAME } from "@/lib/seo";
 
 type Params = { searchParams: Promise<{ page?: string }> };
 
-const TITULO = "Blog de imagen personal y profesional";
+const TITULO = "Blog de Asesoría de Imagen: Colorimetría, Estilo y Marca Personal";
 const DESCRIPCION =
   "Colorimetría, morfología, estilo y marca personal explicados sin tecnicismos, para que tu imagen trabaje a favor de tus objetivos.";
 

@@ -72,7 +72,7 @@ export default function Carrusel({
     }
     return [
       Autoplay({
-        delay: 4000,
+        delay: 6000,
         stopOnMouseEnter: true,
         stopOnInteraction: false,
       }),
