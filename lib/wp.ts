@@ -127,8 +127,6 @@ export function toPost(raw: WpRawPost): Post {
    aquí: hoy es SSR puro (no-store); pasar a ISR es cambiar estas opciones de
    fetch y nada más. */
 
-const WP_API_URL = process.env.WP_API_URL;
-
 export const POSTS_POR_PAGINA = 9;
 
 /** El WP está en la ruta crítica de cada visita: no se le espera indefinidamente. */
@@ -143,16 +141,44 @@ export class WpError extends Error {
 
 type Respuesta<T> = { datos: T; totalPages: number; total: number };
 
+/* Un 403 de WordPress ("rest_forbidden") y un 403 del CDN/WAF que tiene
+   delante son indistinguibles mirando solo el status, y en producción el log
+   es lo único que queda. Estas pistas —cabeceras de origen y cuerpo recortado—
+   identifican quién bloqueó sin volcar la respuesta entera al log. */
+const CABECERAS_PISTA = ["server", "cf-ray", "cf-mitigated", "retry-after"];
+const LARGO_PISTA = 300;
+
+async function pistas(respuesta: Response): Promise<string> {
+  const cabeceras = CABECERAS_PISTA.map(
+    (nombre) => [nombre, respuesta.headers.get(nombre)] as const
+  )
+    .filter(([, valor]) => valor)
+    .map(([nombre, valor]) => `${nombre}: ${valor}`)
+    .join("; ");
+
+  let cuerpo = "";
+  try {
+    cuerpo = (await respuesta.text()).replace(/\s+/g, " ").trim().slice(0, LARGO_PISTA);
+  } catch {
+    /* Cuerpo ilegible o consumido: las cabeceras ya dicen bastante. */
+  }
+
+  return `${cabeceras ? ` [${cabeceras}]` : ""}${cuerpo ? ` — ${cuerpo}` : ""}`;
+}
+
 async function wpFetch<T>(
   ruta: string,
   params: Record<string, string | number | undefined> = {},
   opciones: { revalidate?: number } = {}
 ): Promise<Respuesta<T>> {
-  if (!WP_API_URL) {
+  /* Se lee en cada llamada, no al cargar el módulo: así el valor no queda
+     congelado en el bundle de build y la capa de red es testeable. */
+  const base = process.env.WP_API_URL;
+  if (!base) {
     throw new WpError("Falta la variable de entorno WP_API_URL");
   }
 
-  const url = new URL(`/wp-json/wp/v2/${ruta}`, WP_API_URL);
+  const url = new URL(`/wp-json/wp/v2/${ruta}`, base);
   for (const [clave, valor] of Object.entries(params)) {
     if (valor !== undefined && valor !== "") url.searchParams.set(clave, String(valor));
   }
@@ -177,7 +203,7 @@ async function wpFetch<T>(
 
   if (!respuesta.ok) {
     throw new WpError(
-      `WordPress respondió ${respuesta.status} en ${ruta}`,
+      `WordPress respondió ${respuesta.status} en ${ruta}${await pistas(respuesta)}`,
       respuesta.status
     );
   }

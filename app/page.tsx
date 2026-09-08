@@ -79,6 +79,40 @@ const benefits = [
 ];
 
 const testimonialSlides = [
+
+  <div key="t2" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
+    <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] items-center gap-8">
+      <div>
+        <Image
+          src="/reviews/karina.webp"
+          alt="Karina Víquez"
+          className="object-cover"
+          width={300}
+          height={400}
+        />
+      </div>
+      <div>
+        <div className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8 space-y-2">
+          <p>
+            Trabajar con Caro fue una experiencia nueva y muy provechosa! Su acompañamiento fue claro, cercano y fácil de llevar a la práctica. 
+          </p>
+          <p>
+            Caro tiene la sensibilidad de que cada recomendación partiera de mi realidad, mis gustos y lo que me hace sentir cómoda, sin intentar encajarme en estilos ajenos.
+          </p>
+          <p>
+            Caro me dio muchas ideas y herramientas para sacarle provecho a lo que ya tengo y tomar decisiones con seguridad. Todo el proceso se sintió muy personal y auténtico!
+          </p>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div>
+            <p className="font-body font-medium text-sm text-white">Karina Víquez.</p>
+            <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Asesora Profesional Numucareers · Consultoría de Imagen Profesional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
   <div key="t1" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
     <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] items-center gap-8">
       <div>
@@ -109,40 +143,7 @@ const testimonialSlides = [
         <div className="flex items-center gap-4">
           <div>
             <p className="font-body font-medium text-sm text-white">María Cascante.</p>
-            <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Emprendedora · Consultoría de Imagen Profesional</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>,
-  <div key="t2" className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 sm:p-8 md:p-12 relative">
-    <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] items-center gap-8">
-      <div>
-        <Image
-          src="/reviews/karina.webp"
-          alt="Karina Víquez"
-          className="object-cover"
-          width={300}
-          height={400}
-        />
-      </div>
-      <div>
-        <div className="font-body font-light text-base leading-[1.9] text-white/80 pt-8 sm:pt-6 mb-8 space-y-2">
-          <p>
-            Trabajar con Caro fue una experiencia nueva y muy provechosa! Su acompañamiento fue claro, cercano y fácil de llevar a la práctica. 
-          </p>
-          <p>
-            Caro tiene la sensibilidad de que cada recomendación partiera de mi realidad, mis gustos y lo que me hace sentir cómoda, sin intentar encajarme en estilos ajenos.
-          </p>
-          <p>
-            Caro me dio muchas ideas y herramientas para sacarle provecho a lo que ya tengo y tomar decisiones con seguridad. Todo el proceso se sintió muy personal y auténtico!
-          </p>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <div>
-            <p className="font-body font-medium text-sm text-white">Karina Víquez.</p>
-            <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Emprendedora · Consultoría de Imagen Profesional</p>
+            <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Emprendedora · Consultoría de Imagen Personal</p>
           </div>
         </div>
       </div>
@@ -172,7 +173,7 @@ const testimonialSlides = [
         <div className="flex items-center gap-4">
           <div>
             <p className="font-body font-medium text-sm text-white">Dayanna Rodríguez.</p>
-            <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Podóloga · Consultoría de Imagen Profesional</p>
+            <p className="font-body font-light text-xs text-white/60 tracking-wide uppercase mt-0.5">Especialista en Quiropodia · Colorimetría Integral</p>
           </div>
         </div>
       </div>

@@ -186,3 +186,55 @@ test("toCategoria mapea id, nombre decodificado y slug", () => {
     slug: "imagen-marca-personal",
   });
 });
+
+/* ── Capa de red ─────────────────────────────────────────────────────────
+   Un 403 desde WordPress y un 403 desde el WAF/CDN que tiene delante son
+   indistinguibles si el error solo lleva el status, y en producción es lo
+   único que queda en el log. El mensaje tiene que identificar al autor. */
+
+async function conFetchStub(
+  respuesta: Response,
+  ejecutar: () => Promise<unknown>
+): Promise<Error> {
+  const original = globalThis.fetch;
+  globalThis.fetch = async () => respuesta;
+  try {
+    await ejecutar();
+    throw new Error("se esperaba un WpError");
+  } catch (error) {
+    return error as Error;
+  } finally {
+    globalThis.fetch = original;
+  }
+}
+
+test("el error de una respuesta no-ok incluye el cuerpo y las cabeceras del CDN", async () => {
+  process.env.WP_API_URL = "https://cms.ejemplo.com";
+  const { getPosts } = await import("./wp");
+
+  const error = await conFetchStub(
+    new Response("<html><title>Attention Required! | Cloudflare</title></html>", {
+      status: 403,
+      headers: { server: "cloudflare", "cf-ray": "abc123-MIA", "cf-mitigated": "challenge" },
+    }),
+    () => getPosts()
+  );
+
+  assert.match(error.message, /403 en articulos/);
+  assert.match(error.message, /cloudflare/);
+  assert.match(error.message, /cf-ray: abc123-MIA/);
+  assert.match(error.message, /cf-mitigated: challenge/);
+  assert.match(error.message, /Attention Required/);
+});
+
+test("el error de un 403 de la propia REST conserva el código de WordPress", async () => {
+  process.env.WP_API_URL = "https://cms.ejemplo.com";
+  const { getPosts } = await import("./wp");
+
+  const error = await conFetchStub(
+    Response.json({ code: "rest_forbidden", message: "Lo siento, no tienes permisos." }, { status: 403 }),
+    () => getPosts()
+  );
+
+  assert.match(error.message, /rest_forbidden/);
+});
