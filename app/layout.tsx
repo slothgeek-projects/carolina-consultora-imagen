@@ -97,7 +97,10 @@ export default function RootLayout({
         />
         <LenisProvider>
           {children}
-        </LenisProvider></body>
+        </LenisProvider>
+        <Analytics />
+      </body>
+        
     </html>
   );
 }
