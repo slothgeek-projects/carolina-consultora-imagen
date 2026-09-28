@@ -819,7 +819,7 @@ export default function Home() {
               </p>
               {/* -ml-3 compensa el padding táctil para que los iconos sigan alineados */}
               <div className="flex items-center gap-1 -ml-3">
-                <a href="https://www.instagram.com/pielpanteracollections" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
+                <a href="https://www.instagram.com/carolinaimagencr" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">
                   <InstagramIcon className="w-[18px] h-[18px]" />
                 </a>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Piel Pantera" className="w-11 h-11 inline-flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200">

@@ -12,7 +12,7 @@ export const SITE_URL = (
 
 export const SITE_NAME = "Piel Pantera Collections";
 export const PERSON_NAME = "Carolina Salazar";
-export const INSTAGRAM_URL = "https://www.instagram.com/pielpanteracollections";
+export const INSTAGRAM_URL = "https://www.instagram.com/carolinaimagencr";
 /* TODO cliente: confirmar el número antes de publicar. */
 export const PHONE_E164 = "+50670170734";
 

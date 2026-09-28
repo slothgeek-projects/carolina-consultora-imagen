@@ -1,5 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { Antic_Didone, Montserrat } from "next/font/google";
 import LenisProvider from '@/app/components/LenisProvider'
 import {
