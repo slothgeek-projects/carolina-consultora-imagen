@@ -191,7 +191,7 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <p className="font-body font-light text-xs text-white/50 order-2 md:order-1">
-              © 2025 Piel Pantera Collections. Todos los derechos reservados.
+              © 2026 Carolina Salazar · Consultora de Imagen Estratégica.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 order-1 md:order-2">
               <Link
